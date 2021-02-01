@@ -2,11 +2,12 @@
 
 use CodeIgniter\Controller;
 
-class Pages extends BaseController
+class Pages extends Controller
 {
 	public function index()
 	{
 		return view('welcome_message');
+        // print_r("Hello World!");
 	}
 
 	//--------------------------------------------------------------------

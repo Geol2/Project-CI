@@ -50,9 +50,9 @@
 #--------------------------------------------------------------------
 
 # database.default.hostname = localhost
-# database.default.database = ci4
+# database.default.database = DATABASE_DATA
 # database.default.username = root
-# database.default.password = root
+# database.default.password = wltlro12
 # database.default.DBDriver = MySQLi
 
 # database.tests.hostname = localhost
