@@ -52,7 +52,7 @@
 # database.default.hostname = localhost
 # database.default.database = DATABASE_DATA
 # database.default.username = root
-# database.default.password = wltlro12
+# database.default.password =
 # database.default.DBDriver = MySQLi
 
 # database.tests.hostname = localhost

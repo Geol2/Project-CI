@@ -5,11 +5,24 @@ use CodeIgniter\Controller;
 
 class News extends Controller
 {
-    public function index()
+
+
+    public function index($slug = false)
     {
         $model = new NewsModel();
 
-        return print_r($model->findAll());
+        $data['news'] = $model->getNews($slug);
+
+        if (empty($data['news']))
+        {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the news item: '. $slug);
+        }
+
+        $data['title'] = $data['news']['title'];
+
+        echo view('templates/header', $data);
+        echo view('news/overview', $data);
+        echo view('templates/footer', $data);
     }
 
     public function view($slug = null)
@@ -18,4 +31,6 @@ class News extends Controller
 
         $data['news'] = $model->getNews($slug);
     }
+
+
 }
