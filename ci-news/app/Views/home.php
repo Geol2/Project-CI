@@ -23,10 +23,30 @@
                 left: 50%;
                 transform: translate(-50%, -50%);
             }
+            .aclass{
+                cursor: default;
+                text-decoration: none;
+                color: black;
+                border-radius: 10px;
+                border: solid;
+                transition: border, background 0.5s;
+                margin: 5px;
+                padding: 5px;
+            }
+            .aclass:hover {
+                cursor: pointer;
+                border: solid black;
+                background: black;
+                color : white;
+            }
+            .aclass:active {
+                background: gray;
+                border: solid gray;
+            }
         </style>
         <div class = "home">
             <h1> Home </h1>
-            <a href="/boards/board"> 게시판 가기 </a>
+            <a class="aclass" href="/boards/board"> 게시판 가기 </a>
         </div>
     </body>
 </html>

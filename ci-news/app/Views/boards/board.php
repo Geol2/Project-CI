@@ -35,14 +35,16 @@
         .chart {
             position: relative;
         }
+        .home {
 
+        }
         /*table td, table th, table tr { border: 1px solid black; }*/
 	</style>
 </head>
 
 <body>
 <div class="board">
-    <a href="/"> 홈으로 </a>
+    <a class="home" href="/"> 홈으로 </a>
     <!-- HEADER: MENU + HEROE SECTION -->
     <div class="log">
         <a href="#"> 로그인 </a>
