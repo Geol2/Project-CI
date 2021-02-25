@@ -28,8 +28,12 @@ class BoardController extends Controller
         );
 
         $CM = new ContentModel();
-        $CM->setContent($result);
+        $CM->setModelContentUpload($result);
 
         return $this->response->redirect('/');
+    }
+
+    public function setDataContent() {
+
     }
 }

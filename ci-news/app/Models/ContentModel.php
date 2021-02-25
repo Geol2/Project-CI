@@ -5,7 +5,7 @@ use CodeIgniter\Model;
 
 class ContentModel extends Model {
 
-    public function setContent($params) {
+    public function setModelContentUpload($params) {
         $subject = $params['sub'];
         $content = $params['content'];
         $writer = $params['writer'];
@@ -13,7 +13,6 @@ class ContentModel extends Model {
         $date = new \DateTime('now');
         $date->setTimezone(new \DateTimeZone('Asia/Seoul'));
         $now = $date->format("Y-m-d H:i:s");
-
 
         /*
          * This Query string,

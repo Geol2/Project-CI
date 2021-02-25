@@ -48,7 +48,7 @@
             <tr> <!-- 인덱스 열 -->
                 <td> <input type="checkbox"> </td>
                 <td> 1 </td>
-                <td> 1</td>
+
             </tr>
             <tr> <!-- 제목 -->
                 <td> <input type="checkbox"> </td>
