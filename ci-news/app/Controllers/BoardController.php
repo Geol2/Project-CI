@@ -21,19 +21,20 @@ class BoardController extends Controller
         $content = $request->getPost('content');
         $writer = $request->getPost('writer');
 
-        $result = array(
+        $params = array(
             'sub' => $sub,
             'content' => $content,
             'writer' => $writer
         );
 
         $CM = new ContentModel();
-        $CM->setModelContentUpload($result);
+        $CM->setModelContentUpload($params);
 
         return $this->response->redirect('/');
     }
 
     public function setDataContent() {
-
+        $CM = new ContentModel();
+        $data = $CM->getModelContentDownload();
     }
 }
