@@ -45,8 +45,8 @@
             }
         </style>
         <div class = "home">
-            <h1> Home </h1>
-            <a class="aclass" href="/boards/board"> 게시판 가기 </a>
+            <h1> Homework </h1>
+            <a class="aclass" href="/boards/board"> 게시판으로.. </a>
         </div>
     </body>
 </html>
