@@ -1,6 +1,8 @@
 <?php namespace Config;
 
 // Create a new instance of our RouteCollection class.
+use App\Controllers\BoardController;
+
 $routes = Services::routes();
 
 // Load the system's routing file first, so that the app and ENVIRONMENT
@@ -16,7 +18,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('BoardController');
+$routes->setDefaultController('HomeController');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -31,9 +33,12 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
-$routes->get('/board', 'BoardController::index');
-$routes->get('/board/write', 'BoardController::write');
-$routes->post('/board/getDataContent', 'BoardController::getDataContent');
+$routes->get('/boards/board', 'BoardController::index');
+$routes->get('/boards/write', 'BoardController::write');
+
+$routes->get('/boards','BoardController::setDataContent');
+
+$routes->post('/boards/getDataContent', 'BoardController::getDataContent');
 
 // test routes
 $routes->get('/news', 'NewsController::index');

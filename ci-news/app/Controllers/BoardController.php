@@ -7,11 +7,22 @@ class BoardController extends Controller
 {
     public function index()
     {
-        echo view('board');
+        $CM = new ContentModel();
+        $data = $CM->getModelContentDownload();
+
+        $result = array(
+            'SNO' => $data['SNO'],
+            'SUBJECT_NAME' => $data['SUBJECT_NAME'],
+            'CONTENT' => $data['CONTENT'],
+            'WRITER' => $data['WRITER'],
+            'DATE_CHAR' => $data['DATE_CHAR']
+        );
+
+        echo view('/boards/board', $result);
     }
 
     public function write() {
-        echo view("/board/write");
+        echo view("/boards/write");
     }
 
     public function getDataContent() {
@@ -30,11 +41,11 @@ class BoardController extends Controller
         $CM = new ContentModel();
         $CM->setModelContentUpload($params);
 
-        return $this->response->redirect('/');
+        return $this->response->redirect('/boards/board');
     }
 
     public function setDataContent() {
-        $CM = new ContentModel();
-        $data = $CM->getModelContentDownload();
+
+
     }
 }

@@ -21,8 +21,7 @@ class ContentModel extends Model {
         $unix = now('Asia/Seoul'); // 현재시간 : UNIX 타임 스탬프
         $now = date("Y-m-d H:i:s", $unix);
 
-//         fzaninotto\Faker : Github 참고
-//         Provider
+//         Github : fzaninotto\Faker Provider 참고
 //         $date = new \DateTime('now');
 //         $date->setTimezone(new \DateTimeZone('Asia/Seoul'));
 //         $now = $date->format("Y-m-d H:i:s");
@@ -44,10 +43,32 @@ class ContentModel extends Model {
 
     public function getModelContentDownload() {
         $db = \Config\Database::connect();
-        $query = $db->query("SELECT * FROM USER");
-        $row = $query->getRow();
-        $db->close();
+        /* SELECT * FROM USER */
+        $builder = $db->table('USER');
+        $query = $builder->get();
 
-        return $row;
+        $sno = array();
+        $sub = array();
+        $content = array();
+        $writer = array();
+        $date = array();
+        foreach( $query->getResult('array') as $row ) {
+            array_push($sno, $row['SNO']);
+            array_push($sub, $row['SUBJECT_NAME']);
+            array_push($content, $row['CONTENT']);
+            array_push($writer, $row['WRITER']);
+            array_push($date, $row['DATE_CHAR']);
+        }
+
+        $result = array(
+            'SNO' => $sno,
+            'SUBJECT_NAME' => $sub,
+            'CONTENT' => $content,
+            'WRITER' => $writer,
+            'DATE_CHAR' => $date
+        );
+
+        $db->close();
+        return $result;
     }
 }
