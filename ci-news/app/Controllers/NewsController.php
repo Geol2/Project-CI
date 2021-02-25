@@ -4,7 +4,7 @@ use App\Models\NewsModel;
 use CodeIgniter\Controller;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
-class News extends Controller
+class NewsController extends Controller
 {
     public function index($slug = false)
     {

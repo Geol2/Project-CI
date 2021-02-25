@@ -16,7 +16,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('pages');
+$routes->setDefaultController('BoardController');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -30,10 +30,13 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Page::index');
 
+$routes->get('/board', 'BoardController::index');
+$routes->get('/board/write', 'BoardController::write');
+$routes->post('/board/getDataContent', 'BoardController::getDataContent');
 
-// $routes->get('news/(:segment)', 'News::view/$1');
+// test routes
+$routes->get('/news', 'NewsController::index');
 
 /**
  * --------------------------------------------------------------------
