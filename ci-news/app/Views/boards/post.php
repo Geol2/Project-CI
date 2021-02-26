@@ -16,30 +16,52 @@
         left: 50%;
         transform: translate(-50%, -50%);
     }
-
-    .sub {
+    a {
+        text-decoration: none;
+        color: black;
+        cursor: pointer;
+        transition: color, background 0.5s;
+        border-radius: 2px;
+        margin: 2px;
+        padding: 2px;
+    }
+    a:hover {
+        color: white;
+        background: black;
+    }
+    .submit {
+        text-decoration: none;
+        color: black;
+        background: white;
         border: none;
-        background-color: #f8585b;
-        font-size: 15px;
+        transition: color, background 0.5s;
+        border-radius: 2px;
+        margin: 2px;
+        padding: 2px;
+    }
+    .submit:hover {
+        color: white;
+        background: black;
     }
 </style>
 
 <div class="write_class">
-    <form name="contentForm" id="contentForm" method="post" action="/boards/write/getDataContent">
+    <h1> 글 작성하기 </h1>
+    <form name="contentForm" id="contentForm" method="post" action="/boards/1/post/getDataContent">
         <div>
             <label for="sub"> 제목 </label>
             <input name="sub" type="text" id="sub">
         </div>
         <div>
             <label for="content"> 내용 </label>
-            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+            <textarea name="content" id="content" cols="30" rows="10" placeholder="내용을 입력하세요."></textarea>
         </div>
         <div>
             <label for="writer"> 작성자 </label>
             <input name="writer" id="writer" cols="30" rows="10"></input>
         </div>
         <div>
-            <input type="submit" value="전송">
+            <input class="submit" type="submit" value="전송">
         </div>
     </form>
     <div>

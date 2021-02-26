@@ -28,9 +28,13 @@ class BoardController extends Controller
         echo view("/boards/post");
     }
 
+    // 뷰에서 글 작성 전송 요청 시 실행되는 함수
     public function getDataContent() {
         $request = service('request');
 
+        /*
+         * $_POST
+         */
         $sub = $request->getPost('sub');
         $content = $request->getPost('content');
         $writer = $request->getPost('writer');
@@ -44,16 +48,32 @@ class BoardController extends Controller
         $CM = new ContentModel();
         $CM->setModelContentUpload1($params);
 
-        return $this->response->redirect('/boards');
+        return $this->response->redirect('/boards/1');
     }
 
-    public function setDataContent($seg1 = false, $seg2 = false) {
-        // echo $seg2;
+    // 수정 페이지 로드
+    public function edit($seg1 = false) {
+        // echo $seg1;
+        $data['data'] = $seg1;
+        return view('/boards/edit', $data);
+    }
+
+    // 뷰에서 수정 요청 시 실행되는 함수.
+    public function setDataContent($seg = false) {
+        // echo $seg;
+        $request = service('request');
+
+        $sub = $request->getPost('sub');
+        $content = $request->getPost('content');
+
+        $data = array(
+            "SUBJECT_NAME" => $sub,
+            "CONTENT" => $content
+        );
 
         $CM = new ContentModel();
-        $data = $CM->setModelContentUpload2($seg1, $seg2);
+        $CM->setModelContentUpload2($seg, $data);
 
-
-        return view('/boards/edit');
+        return $this->response->redirect('/boards/1');
     }
 }

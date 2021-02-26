@@ -45,7 +45,9 @@
 </style>
 
 <div class="write_class">
-    <form name="contentForm" id="contentForm" method="post">
+    <h1> <?= esc($data, 'html') ?> 번 글 수정하기 </h1>
+
+    <form name="contentForm" id="contentForm" method="post" action="/boards/1/post/<?= esc($data, 'url') ?>/setDataContent/">
         <div>
             <label for="sub"> 제목 </label>
             <input name="sub" type="text" id="sub">
@@ -53,11 +55,12 @@
         
         <div>
             <label for="content"> 수정 </label>
-            <textarea name="content" id="content" cols="30" rows="10" placeholder="내용을 입력하세요."> </textarea>
+            <textarea name="content" id="content" cols="30" rows="10" placeholder="내용을 입력하세요."></textarea>
         </div>
 
         <div>
             <input class="submit" type="submit" value="전송">
+            <h5> ※ 작성일이 최신으로 변경됩니다. </h5>
         </div>
     </form>
     <div>

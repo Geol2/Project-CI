@@ -17,6 +17,10 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
  * Router Setup
  * --------------------------------------------------------------------
  */
+
+/*
+ * 기본 홈 페이지
+ * */
 $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('HomeController');
 $routes->setDefaultMethod('index');
@@ -34,22 +38,29 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 
 /*
- * 게시판
- */
+ * 게시판 페이지
+ * */
 $routes->get('/boards/1', 'BoardController::index');
+
+/*
+ * 글 작성 페이지
+ * */
 $routes->get('/boards/1/post', 'BoardController::post');
-$routes->get('/boards/1/post/(:segment)','BoardController::setDataContent/post/$1');
 
 /*
- * 글 작성
- * */
-$routes->get('/boards/post', 'BoardController::post');
-$routes->post('/boards/write/getDataContent', 'BoardController::getDataContent');
+ * 글 수정 페이지
+ */
+$routes->get('/boards/1/post/(:segment)','BoardController::edit/$1');
 
 /*
- * 글 목록 수정
+ * 글 작성 폼 전송
  * */
-$routes->get ('/boards/edit', 'BoardController::edit');
+$routes->post('/boards/1/post/getDataContent', 'BoardController::getDataContent');
+
+/*
+ * 글 수정 폼 전송
+ * */
+$routes->post('/boards/1/post/(:segment)/setDataContent', 'BoardController::setDataContent/$1');
 
 // test routes
 $routes->get('/news', 'NewsController::index');

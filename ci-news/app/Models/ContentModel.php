@@ -4,8 +4,9 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 class ContentModel extends Model {
-    protected $db;
-
+    protected $db; // DB 커넥션
+    protected $now; // 시간 저장
+    
     public function __construct() {
         /* 헬퍼 로드
          * vendor\CodeIgniter4\system\helpers\date_helper.php
@@ -13,7 +14,9 @@ class ContentModel extends Model {
          * 많은 기능이 'vendor\CodeIgniter4\system\I18n' 모듈로 이동됨.
          */
         helper('date');
-
+        $unix = now('Asia/Seoul'); // 현재시간 : UNIX 타임 스탬프
+        $this->now = date("Y-m-d H:i:s", $unix); // UNIX 타임스탬프를 년/월/일 시간:분:초 로 변경.
+        
         /* DB 커넥션.
          * DB Connection
          * */
@@ -25,9 +28,6 @@ class ContentModel extends Model {
         $content = $params['content'];
         $writer = $params['writer'];
 
-        $unix = now('Asia/Seoul'); // 현재시간 : UNIX 타임 스탬프
-        $now = date("Y-m-d H:i:s", $unix);
-
 //         Github : fzaninotto\Faker Provider 참고
 //         $date = new \DateTime('now');
 //         $date->setTimezone(new \DateTimeZone('Asia/Seoul'));
@@ -37,27 +37,43 @@ class ContentModel extends Model {
          * This DataBase Query :
          * INSERT INTO USER ('SUBJECT_NAME', 'CONTENT', 'WRITER', 'DATE_CHAR' VALUES ($count, $subject, $content, $writer, $new);
          */
-
         $builder = $this->db->table('user');
         $builder->set("SUBJECT_NAME", $subject);
         $builder->set("CONTENT", $content);
         $builder->set("WRITER", $writer);
-        $builder->set("DATE_CHAR", $now);
+        $builder->set("DATE_CHAR", $this->now);
         $builder->where("user");
         $builder->insert();
         $this->db->close();
     }
 
-    public function setModelContentUpload2($pram1, $param2) {
+    public function setModelContentUpload2($param, $data) {
+        echo $param;
+        $sno = array();
+
+        $data['DATE_CHAR'] = $this->now;
+
+        /*  DATABASE QUERY :
+         *  SELECT DATE_CHAR FROM USER WHERE SNO=$param;
+         * */
+        // $builder = $this->db->table('user');
+        // $builder->getWhere(['SNO', $param], $data['DATE_CHAR']);
+
+        /*  DATABASE QUERY :
+         *  UPDATE USER INTO SET ($data) WHERE ($param);
+         * */
         $builder = $this->db->table('user');
-        $builder = $this->db->set();
+        $builder->where('SNO', $param);
+        $builder->update($data);
         $this->db->close();
     }
 
     public function getModelContentDownload() {
-        /* SELECT * FROM USER */
+        /* DATABASE QUERY :
+         * SELECT * FROM USER
+         * */
         $builder = $this->db->table('USER');
-        $query = $builder->get();
+        $query = $builder->get(); // *
 
         $sno = array();
         $sub = array();
