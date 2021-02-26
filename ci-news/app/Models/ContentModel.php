@@ -4,6 +4,8 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 class ContentModel extends Model {
+    protected $db;
+
     public function __construct() {
         /* 헬퍼 로드
          * vendor\CodeIgniter4\system\helpers\date_helper.php
@@ -11,9 +13,14 @@ class ContentModel extends Model {
          * 많은 기능이 'vendor\CodeIgniter4\system\I18n' 모듈로 이동됨.
          */
         helper('date');
+
+        /* DB 커넥션.
+         * DB Connection
+         * */
+        $this->db = \Config\Database::connect();
     }
 
-    public function setModelContentUpload($params) {
+    public function setModelContentUpload1($params) {
         $subject = $params['sub'];
         $content = $params['content'];
         $writer = $params['writer'];
@@ -30,21 +37,26 @@ class ContentModel extends Model {
          * This DataBase Query :
          * INSERT INTO USER ('SUBJECT_NAME', 'CONTENT', 'WRITER', 'DATE_CHAR' VALUES ($count, $subject, $content, $writer, $new);
          */
-        $db = \Config\Database::connect();
-        $builder = $db->table('user');
+
+        $builder = $this->db->table('user');
         $builder->set("SUBJECT_NAME", $subject);
         $builder->set("CONTENT", $content);
         $builder->set("WRITER", $writer);
         $builder->set("DATE_CHAR", $now);
         $builder->where("user");
         $builder->insert();
-        $db->close();
+        $this->db->close();
+    }
+
+    public function setModelContentUpload2($pram1, $param2) {
+        $builder = $this->db->table('user');
+        $builder = $this->db->set();
+        $this->db->close();
     }
 
     public function getModelContentDownload() {
-        $db = \Config\Database::connect();
         /* SELECT * FROM USER */
-        $builder = $db->table('USER');
+        $builder = $this->db->table('USER');
         $query = $builder->get();
 
         $sno = array();
@@ -67,8 +79,8 @@ class ContentModel extends Model {
             'WRITER' => $writer,
             'DATE_CHAR' => $date
         );
+        $this->db->close();
 
-        $db->close();
         return $result;
     }
 }

@@ -5,8 +5,10 @@ use CodeIgniter\Controller;
 
 class BoardController extends Controller
 {
+    // 게시판
     public function index()
     {
+        // 게시판 데이터 불러오기
         $CM = new ContentModel();
         $data = $CM->getModelContentDownload();
 
@@ -21,8 +23,9 @@ class BoardController extends Controller
         echo view('/boards/board', $result);
     }
 
-    public function write() {
-        echo view("/boards/write");
+    // 글 작성 페이지
+    public function post() {
+        echo view("/boards/post");
     }
 
     public function getDataContent() {
@@ -39,13 +42,18 @@ class BoardController extends Controller
         );
 
         $CM = new ContentModel();
-        $CM->setModelContentUpload($params);
+        $CM->setModelContentUpload1($params);
 
-        return $this->response->redirect('/boards/board');
+        return $this->response->redirect('/boards');
     }
 
-    public function setDataContent() {
+    public function setDataContent($seg1 = false, $seg2 = false) {
+        // echo $seg2;
+
+        $CM = new ContentModel();
+        $data = $CM->setModelContentUpload2($seg1, $seg2);
 
 
+        return view('/boards/edit');
     }
 }

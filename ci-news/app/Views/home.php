@@ -29,7 +29,7 @@
                 color: black;
                 border-radius: 10px;
                 border: solid;
-                transition: border, background 0.5s;
+                transition: border, background 0.2s;
                 margin: 5px;
                 padding: 5px;
             }
@@ -46,7 +46,7 @@
         </style>
         <div class = "home">
             <h1> Homework </h1>
-            <a class="aclass" href="/boards/board"> 게시판으로.. </a>
+            <a class="aclass" href="/boards/1"> 게시판으로 </a>
         </div>
     </body>
 </html>

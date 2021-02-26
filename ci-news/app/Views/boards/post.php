@@ -16,6 +16,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
     }
+
     .sub {
         border: none;
         background-color: #f8585b;
@@ -24,7 +25,7 @@
 </style>
 
 <div class="write_class">
-    <form name="contentForm" id="contentForm" method="post" action="/boards/getDataContent">
+    <form name="contentForm" id="contentForm" method="post" action="/boards/write/getDataContent">
         <div>
             <label for="sub"> 제목 </label>
             <input name="sub" type="text" id="sub">
@@ -42,6 +43,6 @@
         </div>
     </form>
     <div>
-        <a href="/boards/board"> 취소 </a>
+        <a href="/boards/1"> 취소 </a>
     </div>
 </div>

@@ -33,12 +33,23 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
-$routes->get('/boards/board', 'BoardController::index');
-$routes->get('/boards/write', 'BoardController::write');
+/*
+ * 게시판
+ */
+$routes->get('/boards/1', 'BoardController::index');
+$routes->get('/boards/1/post', 'BoardController::post');
+$routes->get('/boards/1/post/(:segment)','BoardController::setDataContent/post/$1');
 
-$routes->get('/boards','BoardController::setDataContent');
+/*
+ * 글 작성
+ * */
+$routes->get('/boards/post', 'BoardController::post');
+$routes->post('/boards/write/getDataContent', 'BoardController::getDataContent');
 
-$routes->post('/boards/getDataContent', 'BoardController::getDataContent');
+/*
+ * 글 목록 수정
+ * */
+$routes->get ('/boards/edit', 'BoardController::edit');
 
 // test routes
 $routes->get('/news', 'NewsController::index');
