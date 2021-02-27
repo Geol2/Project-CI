@@ -76,4 +76,13 @@ class BoardController extends Controller
 
         return $this->response->redirect('/boards/1');
     }
+
+    public function delDataContent($seg = false) {
+        $data = $seg;
+
+        $CM = new ContentModel();
+        $CM->delModelData($data);
+
+        return $this->response->redirect('/boards/1');
+    }
 }

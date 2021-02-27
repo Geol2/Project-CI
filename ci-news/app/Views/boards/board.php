@@ -119,8 +119,8 @@
                     <td> <?= $CONTENT[$i]; ?> </td>
                     <td> <?= $WRITER[$i]; ?> </td>
                     <td> <?= $DATE_CHAR[$i]; ?> </td>
-                    <td> <a class='edit' href='/boards/1/post/<?= $SNO[$i]; ?>'> 수정 </a> </td>
-                    <td> <a class='delete' href='/boards/1'> 삭제 </a> </td>
+                    <td> <a class='edit' href='/boards/1/post/<?= esc( $SNO[$i], 'url' ); ?>'> 수정 </a> </td>
+                    <td> <a class='delete' href='/boards/1/post/data/<?= esc( $SNO[$i], 'url' ); ?>'> 삭제 </a> </td>
                 </tr>
                 <?php } ?>
                 </tbody>

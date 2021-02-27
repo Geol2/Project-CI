@@ -99,4 +99,13 @@ class ContentModel extends Model {
 
         return $result;
     }
+
+    public function delModelData($data) {
+        /*
+         *  DELETE FROM USER WHERE SNO = $data;
+         */
+        $builder = $this->db->table("user");
+        $builder->delete(['SNO' => $data]);
+        $this->db->close();
+    }
 }

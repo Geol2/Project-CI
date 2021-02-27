@@ -62,6 +62,11 @@ $routes->post('/boards/1/post/getDataContent', 'BoardController::getDataContent'
  * */
 $routes->post('/boards/1/post/(:segment)/setDataContent', 'BoardController::setDataContent/$1');
 
+/*
+ * 글 삭제 폼 전송
+ * */
+$routes->get('/boards/1/post/data/(:segment)', 'BoardController::delDataContent/$1');
+
 // test routes
 $routes->get('/news', 'NewsController::index');
 
