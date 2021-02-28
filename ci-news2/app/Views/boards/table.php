@@ -41,6 +41,7 @@
         width: 100%;
         border-top: 1px solid #444444;
         border-collapse: collapse;
+        text-align: center;
     }
 
     td {
