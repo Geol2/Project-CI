@@ -58,7 +58,7 @@
         background: black;
     }
     #sub:hover, #content:hover {
-        cursor: pointer;
+        cursor: text;
     }
     .divide {
         display: table;
