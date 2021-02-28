@@ -123,7 +123,7 @@ class Boards extends ResourceController
         );
 
         $RM = new ResourceModel();
-        $update = $RM->udtDataUser($sno, $result);
+        $RM->udtDataUser($sno, $result);
 
         return $this->response->redirect('/Boards');
     }
