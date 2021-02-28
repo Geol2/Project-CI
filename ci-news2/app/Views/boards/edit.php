@@ -77,15 +77,15 @@
 
         <div>
             <label for="sub"> 제목 </label>
-            <input name="sub" type="text" id="sub" value="<?= esc( $SUBJECT_NAME, 'html') ?>">
+            <input name="sub" type="text" id="sub" value="<?= esc( $SUBJECT_NAME, 'html') ?>" maxlength='20'>
         </div>
         <div>
             <p for="content"> 내용 </p>
-            <textarea name="content" id="content" cols="30" rows="10" placeholder=""><?= esc( $CONTENT, 'html') ?></textarea>
+            <textarea name="content" id="content" cols="30" rows="10" placeholder="" maxlength='200'><?= esc( $CONTENT, 'html') ?></textarea>
         </div>
         <div>
             <label for="writer"> 작성자 </label>
-            <input name="writer" type="text" id="writer" value="<?= esc( $WRITER, 'html') ?>" readonly>
+            <input name="writer" type="text" id="writer" maxlength='20' value="<?= esc( $WRITER, 'html') ?>" readonly>
         </div>
 
         <div>
@@ -97,7 +97,7 @@
                 <input class="submit" type="submit" value="전송">
             </div>
             <div>
-                <a href="/Boards"> 취소 </a>
+                <a href="/Boards/<?= esc( $SNO, 'html') ?>"> 취소 </a>
             </div>
         </div>
     </form>

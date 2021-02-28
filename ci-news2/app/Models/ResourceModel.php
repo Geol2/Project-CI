@@ -43,7 +43,7 @@ class ResourceModel extends Model {
 
     function getUser($sno_) {
         /* DATABASE QUERY :
-         * SELECT * FROM USER WHERE SNO = $sno_
+         * SELECT * FROM USER WHERE SNO=$sno_
          * */
         $builder = $this->db->table('USER');
         $builder->get(); // *
@@ -58,7 +58,7 @@ class ResourceModel extends Model {
 
     function getListUser() {
         /* DATABASE QUERY :
-         * SELECT * FROM USER
+         * SELECT * FROM USER WHERE $sno, $date_char
          * */
         $builder = $this->db->table('USER');
         $query = $builder->get(); // *

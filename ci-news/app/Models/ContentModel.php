@@ -48,7 +48,7 @@ class ContentModel extends Model {
     }
 
     public function setModelContentUpload2($param, $data) {
-        echo $param;
+        //echo $param;
         $sno = array();
 
         $data['DATE_CHAR'] = $this->now;

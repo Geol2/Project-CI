@@ -52,15 +52,15 @@
     <form name="contentForm" id="contentForm" method="post" action="/Boards/create">
         <div>
             <label for="sub"> 제목 </label>
-            <input name="sub" type="text" id="sub" placeholder="제목을 입력하세요. (20글자)">
+            <input name="sub" type="text" id="sub" placeholder="제목을 입력하세요. (20글자)" maxlength='20'>
         </div>
         <div>
             <label for="content"> 내용 </label>
-            <textarea name="content" id="content" cols="30" rows="10" placeholder="내용을 입력하세요. (200글자)"></textarea>
+            <textarea name="content" id="content" cols="30" rows="10" placeholder="내용을 입력하세요. (200글자)" maxlength='200'></textarea>
         </div>
         <div>
             <label for="writer"> 작성자 </label>
-            <input name="writer" type="text" id="writer" placeholder="작성자를 입력하세요. (10글자)">
+            <input name="writer" type="text" id="writer" placeholder="작성자를 입력하세요. (10글자)" maxlength='10'>
         </div>
         <div>
             <input class="submit" type="submit" value="전송">
