@@ -3,11 +3,14 @@
 namespace App\Controllers;
 
 use App\Models\ResourceModel;
+use App\Models\UserModel;
 use CodeIgniter\RESTful\ResourceController;
+use CodeIgniter\RESTful\ResourcePresenter;
 
-class Boards extends ResourceController
+class Boards extends ResourcePresenter
 {
     protected $now;
+    protected $pager;
 
     public function __construct()
     {
@@ -24,8 +27,12 @@ class Boards extends ResourceController
 	public function index()
     {
         // 게시판 데이터 불러오기
-        $CM = new ResourceModel();
-        $data = $CM->getListUser();
+         $RM = new ResourceModel();
+         $data = $RM->getListUser();
+
+//        $UM = new UserModel();
+//        $data = $UM->getUsers(false);
+//        echo $data;
 
         $result = array(
             'SNO' => $data['SNO'],
@@ -41,10 +48,7 @@ class Boards extends ResourceController
 
 	public function new()
     {
-        $data = array(
-            'data' => 1
-        );
-        return view('boards/new', $data);
+        return view('boards/new' );
     }
 
     public function create()
@@ -62,16 +66,19 @@ class Boards extends ResourceController
             'WRITER' => $writer
         );
 
-        $CM = new ResourceModel();
-        $CM->setDataUser($data);
+        $RM = new ResourceModel();
+        $RM->setDataUser($data);
 
         return $this->response->redirect('/Boards');
+    }
+    function showparams() {
+        echo 'function showparams';
     }
 
     function show($id = null)
     {
         $sno = $id;
-        // 게시판 데이터 불러오기
+        // 게시판 한 개 데이터 불러오기
         $CM = new ResourceModel();
         $data = $CM->getUser($sno);
 

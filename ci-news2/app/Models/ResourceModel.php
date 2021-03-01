@@ -1,11 +1,21 @@
 <?php
 namespace App\Models;
 
+use CodeIgniter\Database\BaseConnection;
 use CodeIgniter\Model as Model;
 
 class ResourceModel extends Model {
     protected $now;
     protected $db;
+
+    protected $table = "user";
+    protected $primaryKey= "SNO";
+
+    protected $useAutoIncrement = true;
+    protected $returnType = 'array';
+
+    protected $allowedFields = ['SNO', 'SUBJECT_NAME', 'COTNENT', 'WRITER', 'DATE_CHAR'];
+
 
     public function __construct() {
         /* 헬퍼 로드
@@ -17,14 +27,14 @@ class ResourceModel extends Model {
         $unix = now('Asia/Seoul'); // 현재시간 : UNIX 타임 스탬프
         $this->now = date("Y-m-d H:i:s", $unix); // UNIX 타임스탬프를 년/월/일 시간:분:초 로 변경.
 
-        $this->db = $this->dbconn();
+        $this->db = db_connect();
     }
-
-    function dbconn(): \CodeIgniter\Database\BaseConnection
-    {
-        $this->db = \Config\Database::connect();
-        return $this->db;
-    }
+//
+//    function dbconn(): BaseConnection
+//    {
+//        $this->db = \Config\Database::connect();
+//        return $this->db;
+//    }
 
     function setDataUser($datas) {
         $subject = $datas['SUB'];
@@ -83,7 +93,7 @@ class ResourceModel extends Model {
             'WRITER' => $writer,
             'DATE_CHAR' => $date
         );
-        $this->db->close();
+        // $this->db->close();
 
         return $result;
     }

@@ -62,7 +62,7 @@
     <h1 class="home_name"> Homework </h1>
     <h3> - 숙제 - </h3>
     </br>
-    <a class="aclass" href="/boards"> 게시판으로 </a>
+    <a class="aclass" href="/Boards"> 게시판으로 </a>
 </div>
 </body>
 </html>
