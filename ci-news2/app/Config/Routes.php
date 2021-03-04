@@ -50,7 +50,7 @@ $routes->put('Boards/update/(.*)', 'Boards::update/$1');
 // $routes->get('Boards/data', 'Boards::showparams');
 
 // 게시판 한 개 보이기
-$routes->get('Boards/show/(.*)', 'Boards::show/$1');
+$routes->get('Boards/(.*)', 'Boards::show/$1');
 
 // 게시판 작성 폼 요청 시 교환 데이터 경로
 $routes->post('Boards', 'Boards::create');

@@ -74,8 +74,8 @@
             <div class="content">
                 <div class="main_content">
                     <label> 내용 </label>
-<!--                    <p> --><?//= esc($CONTENT, 'html') ?><!-- </p>-->
-                    <div id="viewer"><p><?= esc($CONTENT, 'html') ?></p></div>
+                    <p> <?= esc($CONTENT, 'html') ?> </p>
+<!--                    <div id="viewer"><p>--><?//= esc($CONTENT, 'html') ?><!--</p></div>-->
                 </div>
 
             </div>
@@ -86,13 +86,13 @@
                 <h5> <a href="/Boards"> 보드로 가기 </a></h5>
             </div>
         </div>
-        <script src="https://uicdn.toast.com/editor/latest/toastui-editor-viewer.js"></script>
-        <script>
-            const content = [].join('\n');
-            const viewer = new toastui.Editor({
-                el: document.querySelector('#viewer'),
-                initialValue: content
-            });
-        </script>
+<!--        <script src="https://uicdn.toast.com/editor/latest/toastui-editor-viewer.js"></script>-->
+<!--        <script>-->
+<!--            const content = [].join('\n');-->
+<!--            const viewer = new toastui.Editor({-->
+<!--                el: document.querySelector('#viewer'),-->
+<!--                initialValue: content-->
+<!--            });-->
+<!--        </script>-->
     </body>
 </html>

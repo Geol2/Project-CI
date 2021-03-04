@@ -22,25 +22,18 @@ class Boards extends ResourcePresenter
         helper('date');
         $unix = now('Asia/Seoul'); // 현재시간 : UNIX 타임 스탬프
         $this->now = date("Y-m-d H:i:s", $unix); // UNIX 타임스탬프를 년/월/일 시간:분:초 로 변경.
+
     }
 
 	public function index()
     {
         // 게시판 데이터 불러오기
-         $RM = new ResourceModel();
-         $data = $RM->getListUser();
+        $RM = new ResourceModel();
+        $data = $RM->getListUser();
+        $count = $RM->getUserCount();
 
-//        $UM = new UserModel();
-//        $data = $UM->getUsers(false);
-//        echo $data;
-
-        $result = array(
-            'SNO' => $data['SNO'],
-            'SUBJECT_NAME' => $data['SUBJECT_NAME'],
-            'CONTENT' => $data['CONTENT'],
-            'WRITER' => $data['WRITER'],
-            'DATE_CHAR' => $data['DATE_CHAR']
-        );
+        $result['list'] = $data['list'];
+        
 
         echo view('/boards/table', $result);
         echo view('/boards/board');
@@ -71,16 +64,13 @@ class Boards extends ResourcePresenter
 
         return $this->response->redirect('/Boards');
     }
-    function showparams() {
-        echo 'function showparams';
-    }
 
     function show($id = null)
     {
         $sno = $id;
         // 게시판 한 개 데이터 불러오기
-        $CM = new ResourceModel();
-        $data = $CM->getUser($sno);
+        $RM = new ResourceModel();
+        $data = $RM->getUser($sno);
 
         $result = array(
             'SNO' => $data[0]['SNO'],
@@ -96,8 +86,8 @@ class Boards extends ResourcePresenter
 
     function edit($id = null) {
         // echo "function edit";
-        $CM = new ResourceModel();
-        $data = $CM->getUser($id); // 수정할 데이터 불러오기
+        $RM = new ResourceModel();
+        $data = $RM->getUser($id); // 수정할 데이터 불러오기
 
         $result = array(
             'SNO' => $data[0]['SNO'],

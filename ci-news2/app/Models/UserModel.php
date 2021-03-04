@@ -10,11 +10,16 @@ class UserModel extends Model {
     protected $table = "user";
     protected $allowedFields = ['SNO', 'SUBJECT_NAME', 'COTNENT', 'WRITER', 'DATE_CHAR'];
 
+    protected $returnType =  'string';
+
+    protected $primaryKey = 'SNO';
 
     public function __construct() {
         $this->db = db_connect();
         $this->db->table('user');
-        // $this->db->close();
+        $query = $this->db->query('SELECT * FROM users');
+        $result = $query->getResult();
+        $this->db->close();
     }
 
     public function getUsers($slug = false): array

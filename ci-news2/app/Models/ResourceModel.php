@@ -66,36 +66,28 @@ class ResourceModel extends Model {
         return $data;
     }
 
+    function getUserCount() {
+        $builder = $this->db->table('USER');
+        $builder->selectCount('SNO');
+
+        $data = $builder->get()->getResultArray();
+
+        $q = $this->db->getLastQuery();
+
+        $this->db->close();
+        return $data;
+    }
+
     function getListUser() {
         /* DATABASE QUERY :
          * SELECT * FROM USER WHERE $sno, $date_char
          * */
         $builder = $this->db->table('USER');
-        $query = $builder->get(); // *
 
-        $sno = array();
-        $sub = array();
-        $content = array();
-        $writer = array();
-        $date = array();
-        foreach( $query->getResult('array') as $row ) {
-            array_push($sno, $row['SNO']);
-            array_push($sub, $row['SUBJECT_NAME']);
-            array_push($content, $row['CONTENT']);
-            array_push($writer, $row['WRITER']);
-            array_push($date, $row['DATE_CHAR']);
-        }
+        // $query = $builder->get(); // *
+        $data['list'] = $builder->get()->getResultArray();
 
-        $result = array(
-            'SNO' => $sno,
-            'SUBJECT_NAME' => $sub,
-            'CONTENT' => $content,
-            'WRITER' => $writer,
-            'DATE_CHAR' => $date
-        );
-        // $this->db->close();
-
-        return $result;
+        return $data;
     }
 
     function udtDataUser($sno = null, $data = null) {

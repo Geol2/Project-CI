@@ -74,11 +74,15 @@
         .chart {
             position: relative;
         }
+
+        .paging {
+            text-align: center;
+        }
     </style>
 
     <body>
         <div class="board">
-            <h1 class="chart_name"> 보드 게시판 </h1>
+            <h1 class="chart_name"> 게시판 </h1>
             <div class="chart">
                 <table>
                     <thead>
@@ -94,20 +98,23 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <?php for($i = count($SNO) - 1 ; $i >= 0 ; $i--) { ?>
-                        <?php // for($i = 0; $i < count($SNO); $i++) { ?>
+                    <?php for($i = count($list) - 1 ; $i >= 0 ; $i--) { ?>
                         <tr>
                             <td><input class="getCheck" type="checkbox" id=""> </td>
-                            <td> <?= $SNO[$i]; ?> </td>
-                            <td> <?= $SUBJECT_NAME[$i]; ?> </td>
-                            <td> <?= $CONTENT[$i]; ?> </td>
-                            <td> <?= $WRITER[$i]; ?> </td>
-                            <td> <?= $DATE_CHAR[$i]; ?> </td>
-                            <td> <a class='show' href='/Boards/show/<?= esc( $SNO[$i], 'url' ); ?>'> 보기 </a> </td>
+                            <td> <?= $list[$i]['SNO']; ?> </td>
+                            <td> <?= $list[$i]['SUBJECT_NAME']; ?> </td>
+                            <td> <?= $list[$i]['CONTENT']; ?> </td>
+                            <td> <?= $list[$i]['WRITER']; ?> </td>
+                            <td> <?= $list[$i]['DATE_CHAR']; ?> </td>
+                            <td> <a class='show' href='/Boards/<?= esc( $list[$i]['SNO'], 'url' ); ?>'> 보기 </a> </td>
                         </tr>
+
                     <?php } ?>
                     </tbody>
                 </table>
+                <div class="paging">
+                    < <a> 1 </a><a> 2 </a><a> 3 </a><a> 4 </a><a> 5 </a><a> 6 </a><a> 7 </a><a> 8 </a><a> 9 </a><a> 10 </a> >
+                </div>
             </div>
 
 

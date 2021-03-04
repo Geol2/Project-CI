@@ -3,11 +3,11 @@
     <head>
         <title>새 글 작성하기</title>
         <!-- Editor's Dependecy Style -->
-<!--        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css"/>-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css"/>
         <!-- Editor's Style -->
-<!--        <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css"/>-->
+        <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css"/>
         <!-- jQuery -->
-<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <style>
         .write_class {
@@ -61,7 +61,7 @@
             <h1> 새 글 작성하기 </h1>
 
 
-            <form name="contentForm" id="contentForm" method="post" action="/Boards/create">
+            <form name="contentForm" id="contentForm" method="post" action="/Boards/create" onsubmit="return false;">
                 <div>
                     <label for="sub"> 제목 </label>
                     <input name="sub" type="text" id="sub" placeholder="제목을 입력하세요. (20글자)" maxlength='20'>
@@ -78,7 +78,7 @@
                     <input name="writer" type="text" id="writer" placeholder="작성자를 입력하세요. (10글자)" maxlength='10'>
                 </div>
                 <div>
-                    <input class="submit" type="submit" value="전송">
+                    <input id="submitBtn" class="submit" type="submit" value="전송">
                 </div>
             </form>
             <div>
@@ -103,5 +103,6 @@
 <!--                this.submit();-->
 <!--            });-->
 <!--        </script>-->
+
     </body>
 </html>
