@@ -32,15 +32,19 @@ class Boards extends ResourcePresenter
 
         // 게시판 데이터 불러오기
         $RM = new ResourceModel();
-        $data = $RM->getListUser();
         $count = $RM->getUserCount();
+        $pageSize = 5; // 한 페이지당 게시글 수 설정 변수
 
-        $getCount = $this->request->getGet('count');
+        $totalPageTmp = $count / $pageSize;
+        $totalPage = ceil($totalPageTmp); // 바인딩할 페이징 계산
 
-        $RM->getPaging($getCount);
+        $getPage = $this->request->getGet('page');
+
+        $contentPaging = $RM->setContentPaging($getPage, $pageSize);
+        $data = $RM->getListUser($contentPaging, $pageSize, $getPage);
 
         $result['list'] = $data['list'];
-        $result['count'] = $count;
+        $result['count'] = $totalPage;
 
         echo view('/boards/table', $result);
         echo view('/boards/board');

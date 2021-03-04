@@ -115,7 +115,7 @@
                 <div class="paging">
                     <
                     <?php for($i = 1; $i <= $count; $i++) { ?>
-                    <a href="/Boards?count=<?= 1 ?>"> <?= $i ?> </a>
+                    <a href="/Boards?page=<?= $i ?>"> <?= $i ?> </a>
                     <?php } ?> >
                 </div>
             </div>

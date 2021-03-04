@@ -66,10 +66,22 @@ class ResourceModel extends Model {
         return $data;
     }
 
-    function getPaging($total) {
-        $pageSize = 5;
-        $totalCount = $total;
-        $startPage = 1;
+    function setContentPaging($getPage = null, $pageSize = null) {
+
+        if( isset($getPage) == false) {
+            return array(
+                "first" => 1,
+                "last" => $pageSize
+            );
+        }
+
+        $firstContent = ($getPage - 1) * $pageSize + 1;
+        $lastContent = $getPage * $pageSize;
+
+        return array(
+            "first" => $firstContent,
+            "last" => $lastContent
+        );
     }
 
     function getUserCount() {
@@ -85,12 +97,17 @@ class ResourceModel extends Model {
         return $count;
     }
 
-    function getListUser() {
+    function getListUser($setContentPaging = null, $pageSize, $getPage = null) {
         /* DATABASE QUERY :
-         * SELECT * FROM USER WHERE $sno, $date_char
+         * SELECT * FROM USER WHERE $sno
          * */
+        if( isset($getPage) == false ) {
+            $getPage = $pageSize;
+        }
+
         $builder = $this->db->table('USER');
-        $builder->limit(3);
+        $builder->limit( $pageSize, $setContentPaging['last'] - $pageSize);
+
 
         // $query = $builder->get();
         $data['list'] = $builder->get()->getResultArray();

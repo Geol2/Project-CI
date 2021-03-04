@@ -61,7 +61,7 @@
             <h1> 새 글 작성하기 </h1>
 
 
-            <form name="contentForm" id="contentForm" method="post" action="/Boards/create" onsubmit="return false;">
+            <form name="contentForm" id="contentForm" method="post" action="/Boards/create">
                 <div>
                     <label for="sub"> 제목 </label>
                     <input name="sub" type="text" id="sub" placeholder="제목을 입력하세요. (20글자)" maxlength='20'>
