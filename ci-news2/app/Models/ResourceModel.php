@@ -66,16 +66,23 @@ class ResourceModel extends Model {
         return $data;
     }
 
+    function getPaging($total) {
+        $pageSize = 5;
+        $totalCount = $total;
+        $startPage = 1;
+    }
+
     function getUserCount() {
         $builder = $this->db->table('USER');
         $builder->selectCount('SNO');
 
         $data = $builder->get()->getResultArray();
 
-        $q = $this->db->getLastQuery();
+        $count = $data[0]['SNO'];
+        // $q = $this->db->getLastQuery();
 
         $this->db->close();
-        return $data;
+        return $count;
     }
 
     function getListUser() {
@@ -83,8 +90,9 @@ class ResourceModel extends Model {
          * SELECT * FROM USER WHERE $sno, $date_char
          * */
         $builder = $this->db->table('USER');
+        $builder->limit(3);
 
-        // $query = $builder->get(); // *
+        // $query = $builder->get();
         $data['list'] = $builder->get()->getResultArray();
 
         return $data;

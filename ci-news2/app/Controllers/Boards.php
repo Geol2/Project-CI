@@ -10,7 +10,8 @@ use CodeIgniter\RESTful\ResourcePresenter;
 class Boards extends ResourcePresenter
 {
     protected $now;
-    protected $pager;
+    // protected $per_paging = 5;
+    // protected $total_paging = 200;
 
     public function __construct()
     {
@@ -27,13 +28,19 @@ class Boards extends ResourcePresenter
 
 	public function index()
     {
+        $request = service('request');
+
         // 게시판 데이터 불러오기
         $RM = new ResourceModel();
         $data = $RM->getListUser();
         $count = $RM->getUserCount();
 
+        $getCount = $this->request->getGet('count');
+
+        $RM->getPaging($getCount);
+
         $result['list'] = $data['list'];
-        
+        $result['count'] = $count;
 
         echo view('/boards/table', $result);
         echo view('/boards/board');
