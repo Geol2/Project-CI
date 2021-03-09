@@ -2,6 +2,7 @@
 <html>
     <head>
         <title> 게시판! </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <!-- STYLES -->
     <style>
@@ -113,11 +114,19 @@
                     </tbody>
                 </table>
                 <div class="paging">
-                    <
                     <?php for($i = 1; $i <= $count; $i++) { ?>
                     <a href="/Boards?page=<?= $i ?>"> <?= $i ?> </a>
-                    <?php } ?> >
+                    <?php } ?>
+                    <a href='javascript:void(0)'> test </a>
+                    <a href='#'> test2 </a>
+                    <a href='#' onclick="alert('hi');"> test3 </a>
+                    <a href='#' onclick="alert('hi');return false;"> test4 </a>
                 </div>
+
+                <div id="test"> </div>
             </div>
 
+            <script type="text/javascript">
+                $("#test").html();
 
+            </script>
