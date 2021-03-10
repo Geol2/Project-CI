@@ -2,12 +2,6 @@
 <html lang="en">
     <head>
         <title> <?= esc( $SNO, 'html') ?>번 글 수정하기 </title>
-        <!-- Editor's Dependecy Style -->
-<!--        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css"/>-->
-        <!-- Editor's Style -->
-<!--        <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css"/>-->
-        <!-- jQuery -->
-<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
     </head>
     <style>
         * {
@@ -16,7 +10,6 @@
         body {
             font-family: 'GmarketSansLight';
         }
-
         .write_class {
             position: absolute;
             top: 50%;
@@ -42,16 +35,13 @@
             box-sizing: border-box;
             border: 1px solid black;
         }
-
         #sub:focus, textarea:focus {
             background-color: lightblue;
         }
-
         #sno, #writer, #date_char {
             border: none;
             outline: none;
         }
-
         .submit {
             font-family: 'GmarketSansLight';
             text-decoration: none;
@@ -118,23 +108,5 @@
             </form>
 
         </div>
-
-<!--        <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>-->
-<!--        <script>-->
-<!--            const content = [].join('\n');-->
-<!--            const editor = new toastui.Editor({-->
-<!--                el: document.querySelector('.editor'),-->
-<!--                initialEditType: 'markdown',-->
-<!--                previewStyle: 'vertical',-->
-<!--                height: '300px',-->
-<!--                initialValue: content-->
-<!--            });-->
-<!---->
-<!--            $('form').submit(function(e){-->
-<!--                e.preventDefault();-->
-<!--                $('textarea').val(editor.getMarkdown());-->
-<!--                this.submit();-->
-<!--            });-->
-<!--        </script>-->
     </body>
 </html>

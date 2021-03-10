@@ -5,6 +5,7 @@ use CodeIgniter\Controller;
 
 class Home extends Controller {
   function index() {
-    return view('/home');
+      echo view('/header');
+      echo view('/home');
   }
 }

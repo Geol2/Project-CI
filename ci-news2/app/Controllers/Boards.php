@@ -43,13 +43,15 @@ class Boards extends ResourcePresenter
     $result['list'] = $data['list'];
     $result['count'] = $totalPage;
 
+    echo view('/header');
     echo view('/boards/table', $result);
     echo view('/boards/board');
 	}
 
 	public function new()
     {
-      return view('boards/new' );
+      echo view('/header');
+      echo view('boards/new' );
     }
 
   public function create()
@@ -70,6 +72,7 @@ class Boards extends ResourcePresenter
     $RM = new ResourceModel();
     $RM->setDataUser($data);
 
+    echo view('/header');
     return $this->response->redirect('/Boards');
   }
 
@@ -88,7 +91,7 @@ class Boards extends ResourcePresenter
         'DATE_CHAR' => $data[0]['DATE_CHAR']
     );
 
-    // echo $result." function show";
+    echo view('/header');
     echo view("/Boards/content", $result);
   }
 
@@ -105,6 +108,7 @@ class Boards extends ResourcePresenter
         'DATE_CHAR' => $data[0]['DATE_CHAR']
     );
 
+    echo view('/header');
     echo view("/Boards/edit", $result );
   }
 

@@ -92,13 +92,5 @@
           <h5> <a href="/Boards"> 보드로 가기 </a></h5>
         </div>
       </div>
-<!--        <script src="https://uicdn.toast.com/editor/latest/toastui-editor-viewer.js"></script>-->
-<!--        <script>-->
-<!--            const content = [].join('\n');-->
-<!--            const viewer = new toastui.Editor({-->
-<!--                el: document.querySelector('#viewer'),-->
-<!--                initialValue: content-->
-<!--            });-->
-<!--        </script>-->
     </body>
 </html>
