@@ -122,7 +122,7 @@
                 opacity: 0.3;
             }
         }
-        .write_class{
+        .write_class, .new{
             font-family: 'GmarketSansLight';
             position: absolute;
             top: 50%;
