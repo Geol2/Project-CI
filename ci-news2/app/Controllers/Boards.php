@@ -27,6 +27,7 @@ class Boards extends ResourcePresenter
   {
     $request = service('request');
 
+
     // 게시판 데이터 불러오기
     $RM = new ResourceModel();
     $count = $RM->getUserCount();
