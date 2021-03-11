@@ -58,12 +58,22 @@
             background: #34495e;
             width: 100vw;
             height: 70px;
-
+        }
+        .head .head_log {
             display: flex;
             flex-direction: row;
-
-            justify-content: flex-end ;
+            justify-content: flex-end;
             align-items: center;
+            height: 70px;
+        }
+        .head_name {
+            font-family: 'GmarketSansLight';
+            margin-left: 10px;
+            margin-right: auto;
+            color: white;
+        }
+        .head_name a:hover {
+            cursor: pointer;
         }
         .join, .signup {
             padding: 10px;
@@ -170,6 +180,12 @@
     </style>
 
     <div class="head">
-        <div class="join"> <a href="#"> 로그인 </a> </div>
-        <div class="signup"> <a href="#"> 회원가입 </a> </div>
+
+        <div class="head_log">
+            <div class="head_name">
+                <a href="/Boards"> 게시판 </a>
+            </div>
+            <div class="join"> <a href="#"> 로그인 </a> </div>
+            <div class="signup"> <a href="/sign"> 회원가입 </a> </div>
+        </div>
     </div>

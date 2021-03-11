@@ -3,6 +3,8 @@
 namespace Config;
 
 // Create a new instance of our RouteCollection class.
+use App\Controllers\Test;
+
 $routes = Services::routes();
 
 // Load the system's routing file first, so that the app and ENVIRONMENT
@@ -65,7 +67,7 @@ $routes->post('Boards/remove/(.*)', 'Boards::remove/$1');
 
 
 $routes->get('sign', 'Register::index');
-
+$routes->get('test', 'Test::index');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

@@ -4,6 +4,7 @@ use CodeIgniter\Controller;
 
 class Register extends Controller {
     public function index() {
-        return view('login/register');
+      echo view('header');
+      echo view('login/register');
     }
 }
