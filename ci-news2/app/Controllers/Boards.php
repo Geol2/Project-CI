@@ -19,7 +19,11 @@ class Boards extends ResourcePresenter
     * 많은 기능이 'vendor\CodeIgniter4\system\I18n' 모듈로 이동됨.
     */
     helper('date');
-    $unix = now('Asia/Seoul'); // 현재시간 : UNIX 타임 스탬프
+    try {
+      $unix = now('Asia/Seoul'); // 현재시간 : UNIX 타임 스탬프
+    } catch (\Exception $e) {
+      die($e->getMessage());
+    }
     $this->now = date("Y-m-d H:i:s", $unix); // UNIX 타임스탬프를 년/월/일 시간:분:초 로 변경.
   }
 
