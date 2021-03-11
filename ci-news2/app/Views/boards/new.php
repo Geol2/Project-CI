@@ -3,7 +3,6 @@
     <p> 게시물 작성 페이지 </p>
     <h1> 새 글 작성하기 </h1>
 
-<!--    <form name="contentForm" id="contentForm" method="post" action="/Boards/create">-->
       <div>
         <label for="sub"> 제목 </label>
         <input class="sub" name="sub" type="text" id="sub" placeholder="제목을 입력하세요. (20글자)" maxlength='20'>
@@ -19,9 +18,8 @@
       </div>
       <div>
         <button class="submit" type="button" onclick="transitionForm()"> 전송 </button>
-<!--    <input class="submit" class="submit" type="submit" value="전송">-->
       </div>
-<!--    </form>-->
+
     <div>
       <a class="cancel" href="/Boards"> 취소 </a>
     </div>
