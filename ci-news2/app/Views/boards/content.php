@@ -4,16 +4,16 @@
     <div class="sub">
       <div class="sub_divide">
         <div class="sub_content">
-          <label> 제목 </label>
+          <label style="font-weight: bold"> 제목 </label>
           <p><?= esc($SUBJECT_NAME, 'html') ?> </p>
         </div>
 
         <div class="writer">
-            <label> 작성자 </label>
+            <label style="font-weight: bold"> 작성자 </label>
             <p> <?= esc($WRITER, 'html') ?> </p>
         </div>
         <div class="write">
-            <label> 작성일 </label>
+            <label style="font-weight: bold"> 작성일 </label>
             <p><?= esc($DATE_CHAR, 'html') ?> </p>
         </div>
       </div>
@@ -23,7 +23,7 @@
 
     <div class="content">
       <div class="main_content">
-        <label> 내용 </label>
+        <label style="font-weight: bolder"> 내용 </label>
         <p> <?= esc($CONTENT, 'html') ?> </p>
 <!--                    <div id="viewer"><p>--><?//= esc($CONTENT, 'html') ?><!--</p></div>-->
       </div>
