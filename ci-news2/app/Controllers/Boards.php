@@ -30,7 +30,7 @@ class Boards extends ResourcePresenter
     // 게시판 데이터 불러오기
     $RM = new ResourceModel();
     $count = $RM->getUserCount();
-    $pageSize = 2; // 한 페이지당 게시글 수 설정 변수
+    $pageSize = 5; // 한 페이지당 게시글 수 설정 변수
 
     $totalPageTmp = $count / $pageSize;
     $totalPage = ceil($totalPageTmp); // 바인딩할 페이징 계산

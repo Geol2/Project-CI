@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Xvet</title>
+    <title>Board</title>
     <meta name="description" content="The small framework with powerful features">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
@@ -44,26 +44,6 @@
             font-family: 'GmarketSansBold';
             font-size: 60px;
         }
-        .aclass{
-            cursor: default;
-            text-decoration: none;
-            color: black;
-            border-radius: 5px;
-            border: none;
-            transition: background 0.5s;
-            margin: 5px;
-            padding: 5px;
-        }
-        .aclass:hover {
-            cursor: pointer;
-            background: black;
-            color : white;
-            transition: border, background 0.5s;
-        }
-        .aclass:active {
-            background: gray;
-            border: solid gray;
-        }
         .head {
             background: #34495e;
             width: 100vw;
@@ -81,7 +61,9 @@
         .join a, .signup a{
             font-family: 'GmarketSansLight';
         }
-
+        .chart {
+            text-align: center;
+        }
         .board {
             font-family: 'GmarketSansLight';
             position: absolute;
@@ -98,18 +80,17 @@
         .board a {
             color: black;
         }
-        .paging {
+        .paging, .newwrite, .gohome, .show{
             text-align: center;
             cursor: default;
         }
-
-        .paging a:hover {
+        .paging a:hover, .newwrite:hover, .gohome:hover, .show:hover {
+            cursor: pointer;
             animation-duration: 0.5s;
             animation-name: fadeout;
             animation-iteration-count: 1;
             animation-fill-mode: forwards;
         }
-
         @keyframes fadeout {
             from {
                 opacity: 1;
@@ -117,6 +98,61 @@
             to {
                 opacity: 0.3;
             }
+        }
+        .write_class{
+            font-family: 'GmarketSansLight';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+
+            overflow-y: scroll;
+        }
+        .writer {
+            text-decoration: none;
+            color: black;
+            transition: color, background 0.5s;
+            border-radius: 2px;
+            margin: 2px;
+            padding: 2px;
+        }
+        #sub:focus, textarea:focus, .writer:focus {
+            background-color: lightblue;
+        }
+        .submit {
+            border: none;
+            background: #ecf0f1;
+            font-family: "Gmarket Sans";
+            margin: 5px;
+            border-radius: 5px;
+            padding: 5px;
+            transition: background, color 0.5s;
+        }
+        .submit:hover{
+            background: #7f8c8d;
+            color: white;
+        }
+        input[type=text], textarea {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid black;
+        }
+        .cancel, .edit, .delete, .goboard {
+            color: black;
+            margin: 5px;
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 13px;
+        }
+        .cancel:hover, .edit:hover, .delete:hover, .goboard:hover {
+            background: #7f8c8d;
+            color: white;
         }
     </style>
 

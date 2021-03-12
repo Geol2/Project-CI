@@ -1,7 +1,5 @@
 <div class="home">
-  <h1 class="home_name"> XVet </h1>
+  <h1 class="home_name"> 🧑🏻‍💻 게시판 </h1>
   </br>
-  <a class="aclass" href="/Boards"> Go </a>
+  <a class="goboard" href="/Boards"> 입장하기 </a>
 </div>
-</body>
-</html>

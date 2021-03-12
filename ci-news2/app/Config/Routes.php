@@ -16,7 +16,12 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
  * --------------------------------------------------------------------
  * Router Setup
  * --------------------------------------------------------------------
+ * READ - POST
+ * CREATE - GET
+ * UPDATE - PUT, PATCH
+ * DELETE - DELETE
  */
+
 $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
@@ -58,6 +63,8 @@ $routes->post('Boards', 'Boards::create');
 // 게시판 게시물 삭제
 $routes->post('Boards/remove/(.*)', 'Boards::remove/$1');
 
+
+$routes->get('sign', 'Register::index');
 
 /*
  * --------------------------------------------------------------------

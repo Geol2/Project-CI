@@ -41,7 +41,7 @@ class ResourceModel extends Model {
     $content = $datas['CONTENT'];
     $writer = $datas['WRITER'];
 
-    $builder = $this->db->table('user');
+    $builder = $this->db->table('board');
     $builder->set("SUBJECT_NAME", $subject);
     $builder->set("CONTENT", $content);
     $builder->set("WRITER", $writer);
@@ -55,7 +55,7 @@ class ResourceModel extends Model {
     /* DATABASE QUERY :
     * SELECT * FROM USER WHERE SNO=$sno_
     * */
-    $builder = $this->db->table('USER');
+    $builder = $this->db->table('board');
     $builder->get(); // *
     $builder->where('SNO', $sno_);
 
@@ -85,7 +85,7 @@ class ResourceModel extends Model {
   }
 
   function getUserCount() {
-    $builder = $this->db->table('USER');
+    $builder = $this->db->table('board');
     $builder->selectCount('SNO');
 
     $data = $builder->get()->getResultArray();
@@ -105,7 +105,7 @@ class ResourceModel extends Model {
         $getPage = $pageSize;
     }
 
-    $builder = $this->db->table('USER');
+    $builder = $this->db->table('board');
     $builder->limit( $pageSize, $setContentPaging['last'] - $pageSize);
 
     // $query = $builder->get();
@@ -118,7 +118,7 @@ class ResourceModel extends Model {
     /*  DATABASE QUERY :
     *  UPDATE USER INTO SET ($data) WHERE ($param);
     * */
-    $builder = $this->db->table('user');
+    $builder = $this->db->table('board');
     $builder->where('SNO', $sno);
     $builder->replace($data);
     $this->db->close();
@@ -128,7 +128,7 @@ class ResourceModel extends Model {
     /*
     *  DELETE FROM USER WHERE SNO = $sno;
     */
-    $builder = $this->db->table("user");
+    $builder = $this->db->table("board");
     $builder->delete(['SNO' => $sno]);
     $this->db->close();
   }
