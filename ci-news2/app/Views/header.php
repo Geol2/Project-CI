@@ -33,6 +33,16 @@
             text-decoration: none;
             color: white;
         }
+        table {
+            width: 100%;
+            border-top: 1px solid #444444;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+        th, td {
+            border-bottom: 1px solid #444444;
+            padding: 5px;
+        }
         .home {
             font-family: 'GmarketSansLight';
             position: absolute;
@@ -63,6 +73,9 @@
         }
         .chart {
             text-align: center;
+        }
+        .chart_name {
+            font-family: 'GmarketSansBold';
         }
         .board {
             font-family: 'GmarketSansLight';

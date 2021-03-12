@@ -3,6 +3,15 @@
     <h1 class="chart_name"> 게시판 </h1>
     <div class="chart">
         <table>
+            <colgroup>
+                <col width="5%"/>
+                <col width="10%"/>
+                <col width="20%"/>
+                <col width="30%"/>
+                <col width="10%"/>
+                <col width="15%"/>
+                <col width="10%"/>
+            </colgroup>
             <thead>
             <tr>
                 <th> <input id="allCheck" type="checkbox" value="ALL"> </th>
