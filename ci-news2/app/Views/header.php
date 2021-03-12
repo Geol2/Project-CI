@@ -123,7 +123,7 @@
             padding: 20px;
             border-radius: 5px;
 
-            overflow-y: scroll;
+            width: 600px;
         }
         .writer {
             text-decoration: none;
