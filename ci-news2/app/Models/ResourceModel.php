@@ -8,7 +8,7 @@ class ResourceModel extends Model {
   protected $now;
   protected $db;
 
-  protected $table = "user";
+  protected $table = "board";
   protected $primaryKey= "SNO";
 
   protected $useAutoIncrement = true;
@@ -46,7 +46,7 @@ class ResourceModel extends Model {
     $builder->set("CONTENT", $content);
     $builder->set("WRITER", $writer);
     $builder->set("DATE_CHAR", $this->now);
-    $builder->where("user");
+    $builder->where("board");
     $builder->insert();
     $this->db->close();
   }
@@ -99,7 +99,7 @@ class ResourceModel extends Model {
 
   function getListUser($setContentPaging = null, $pageSize, $getPage = null) {
     /* DATABASE QUERY :
-    * SELECT * FROM USER WHERE $sno
+    * SELECT * FROM board WHERE $sno
     * */
     if( isset($getPage) == false ) {
         $getPage = $pageSize;
@@ -114,9 +114,8 @@ class ResourceModel extends Model {
   }
 
   function udtDataUser($sno = null, $data = null) {
-
     /*  DATABASE QUERY :
-    *  UPDATE USER INTO SET ($data) WHERE ($param);
+    *  UPDATE board INTO SET ($data) WHERE ($param);
     * */
     $builder = $this->db->table('board');
     $builder->where('SNO', $sno);
@@ -126,7 +125,7 @@ class ResourceModel extends Model {
 
   function rmvDataUser($sno = null) {
     /*
-    *  DELETE FROM USER WHERE SNO = $sno;
+    *  DELETE FROM board WHERE SNO = $sno;
     */
     $builder = $this->db->table("board");
     $builder->delete(['SNO' => $sno]);

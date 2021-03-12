@@ -5,16 +5,16 @@
         <form name="contentForm" id="contentForm" method="post" action="/Boards/update/<?= esc( $SNO, 'url') ?>">
             <div>
                 <label for="sub"> 제목 </label>
-                <input class="sub" type="text" id="sub" value="<?= esc( $SUBJECT_NAME, 'html') ?>" maxlength='20'>
+                <input class="sub" type="text" id="sub" name="sub" value="<?= esc( $SUBJECT_NAME, 'html') ?>" maxlength='20'>
             </div>
             <div>
                 <label for="content"> 내용 </label>
-                <textarea class="content" id="content" cols="30" rows="10" placeholder="" maxlength='200'><?= esc( $CONTENT, 'html') ?></textarea>
+                <textarea class="content" id="content" name="content" cols="30" rows="10" placeholder="" maxlength='200'><?= esc( $CONTENT, 'html') ?></textarea>
             </div>
             <br>
             <div>
                 <label for="writer"> 작성자 </label>
-                <input class="writer" type="text" id="writer" maxlength='20' value="<?= esc( $WRITER, 'html') ?>" readonly>
+                <input class="writer" type="text" id="writer" name="writer" maxlength='20' value="<?= esc( $WRITER, 'html') ?>" readonly>
             </div>
             <div class="divide">
                 <div class="divsubmit">
