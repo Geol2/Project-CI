@@ -1,7 +1,6 @@
 <?php
 namespace App\Models;
 
-use CodeIgniter\Database\BaseConnection;
 use CodeIgniter\Model as Model;
 
 class ResourceModel extends Model {
@@ -36,7 +35,7 @@ class ResourceModel extends Model {
   //        return $this->db;
   //    }
 
-  function setDataUser($datas) {
+  function setDataBoard($datas) {
     $subject = $datas['SUB'];
     $content = $datas['CONTENT'];
     $writer = $datas['WRITER'];
@@ -51,7 +50,8 @@ class ResourceModel extends Model {
     $this->db->close();
   }
 
-  function getUser($sno_) {
+  function getBoard($sno_): array
+  {
     /* DATABASE QUERY :
     * SELECT * FROM USER WHERE SNO=$sno_
     * */
@@ -66,7 +66,8 @@ class ResourceModel extends Model {
     return $data;
   }
 
-  function setContentPaging($getPage = null, $pageSize = null) {
+  function setContentPaging($getPage = null, $pageSize = null): array
+  {
 
     if( isset($getPage) == false) {
       return array(
@@ -84,7 +85,7 @@ class ResourceModel extends Model {
     );
   }
 
-  function getUserCount() {
+  function getBoardCount() {
     $builder = $this->db->table('board');
     $builder->selectCount('SNO');
 
@@ -97,7 +98,8 @@ class ResourceModel extends Model {
     return $count;
   }
 
-  function getListUser($setContentPaging = null, $pageSize, $getPage = null) {
+  function getListBoard($setContentPaging = null, $pageSize, $getPage = null): array
+  {
     /* DATABASE QUERY :
     * SELECT * FROM board WHERE $sno
     * */
@@ -113,7 +115,7 @@ class ResourceModel extends Model {
     return $data;
   }
 
-  function udtDataUser($sno = null, $data = null) {
+  function udtDataBoard($sno = null, $data = null) {
     /*  DATABASE QUERY :
     *  UPDATE board INTO SET ($data) WHERE ($param);
     * */
@@ -123,7 +125,7 @@ class ResourceModel extends Model {
     $this->db->close();
   }
 
-  function rmvDataUser($sno = null) {
+  function rmvDataBoard($sno = null) {
     /*
     *  DELETE FROM board WHERE SNO = $sno;
     */

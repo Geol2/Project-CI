@@ -31,8 +31,18 @@
 
     <div>
       <h5> <a class="edit" href="/Boards/edit/<?= esc($SNO, 'html') ?>"> 수정 </a></h5>
-      <h5> <a class="delete" href="/Boards/remove/<?= esc($SNO, 'html') ?>"> 삭제 </a></h5>
+      <h5> <a class="delete" onclick="remove()"> 삭제 </a></h5>
       <h5> <a class="goboard" href="/Boards"> 보드로 가기 </a></h5>
     </div>
   </div>
 </section>
+
+<script type="text/javascript">
+    function remove() {
+        if(confirm("<?=$SNO?>번 게시글을 삭제하시겠습니까?")) {
+            location.href = "/Boards/remove/<?=$SNO?>";
+        } else {
+            alert("취소되었습니다.");
+        }
+    }
+</script>

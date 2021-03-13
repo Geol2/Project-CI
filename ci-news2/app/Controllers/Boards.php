@@ -1,15 +1,13 @@
 <?php namespace App\Controllers;
 
 use App\Models\ResourceModel;
-use App\Models\UserModel;
-use CodeIgniter\RESTful\ResourceController;
+use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\RESTful\ResourcePresenter;
+use Exception;
 
 class Boards extends ResourcePresenter
 {
   protected $now;
-  // protected $per_paging = 5;
-  // protected $total_paging = 200;
 
   public function __construct()
   {
@@ -21,7 +19,7 @@ class Boards extends ResourcePresenter
     helper('date');
     try {
       $unix = now('Asia/Seoul'); // 현재시간 : UNIX 타임 스탬프
-    } catch (\Exception $e) {
+    } catch (Exception $e) {
       die($e->getMessage());
     }
     $this->now = date("Y-m-d H:i:s", $unix); // UNIX 타임스탬프를 년/월/일 시간:분:초 로 변경.
@@ -29,12 +27,11 @@ class Boards extends ResourcePresenter
 
 	public function index()
   {
-    $request = service('request');
-
+    // $request = service('request');
 
     // 게시판 데이터 불러오기
     $RM = new ResourceModel();
-    $count = $RM->getUserCount();
+    $count = $RM->getBoardCount();
     $pageSize = 5; // 한 페이지당 게시글 수 설정 변수
 
     $totalPageTmp = $count / $pageSize;
@@ -43,7 +40,7 @@ class Boards extends ResourcePresenter
     $getPage = $this->request->getGet('page');
 
     $contentPaging = $RM->setContentPaging($getPage, $pageSize);
-    $data = $RM->getListUser($contentPaging, $pageSize, $getPage);
+    $data = $RM->getListBoard($contentPaging, $pageSize, $getPage);
 
     $result['list'] = $data['list'];
     $result['count'] = $totalPage;
@@ -59,7 +56,7 @@ class Boards extends ResourcePresenter
       echo view('boards/new' );
     }
 
-  public function create()
+  public function create(): ResponseInterface
   {
     // echo 'function create exec';
     $request = service('request');
@@ -75,7 +72,7 @@ class Boards extends ResourcePresenter
     );
 
     $RM = new ResourceModel();
-    $RM->setDataUser($data);
+    $RM->setDataBoard($data);
 
     echo view('/header');
     return $this->response->redirect('/Boards');
@@ -86,7 +83,7 @@ class Boards extends ResourcePresenter
     $sno = $id;
     // 게시판 한 개 데이터 불러오기
     $RM = new ResourceModel();
-    $data = $RM->getUser($sno);
+    $data = $RM->getBoard($sno);
 
     $result = array(
         'SNO' => $data[0]['SNO'],
@@ -103,7 +100,7 @@ class Boards extends ResourcePresenter
   function edit($id = null) {
     // echo "function edit";
     $RM = new ResourceModel();
-    $data = $RM->getUser($id); // 수정할 데이터 불러오기
+    $data = $RM->getBoard($id); // 수정할 데이터 불러오기
 
     $result = array(
         'SNO' => $data[0]['SNO'],
@@ -117,7 +114,7 @@ class Boards extends ResourcePresenter
     echo view("/Boards/edit", $result );
   }
 
-  function update($id = null)
+  function update($id = null): ResponseInterface
   {
     //echo "function update";
     $request = service('request');
@@ -137,15 +134,16 @@ class Boards extends ResourcePresenter
     );
 
     $RM = new ResourceModel();
-    $RM->udtDataUser($sno, $result);
+    $RM->udtDataBoard($sno, $result);
 
     return $this->response->redirect('/Boards');
   }
 
-  function remove($id = null) {
+  function remove($id = null): ResponseInterface
+  {
 
     $RM = new ResourceModel();
-    $RM->rmvDataUser($id);
+    $RM->rmvDataBoard($id);
 
     return $this->response->redirect('/Boards');
   }
