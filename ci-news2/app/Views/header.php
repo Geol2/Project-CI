@@ -146,6 +146,9 @@
         #sub:focus, textarea:focus, .writer:focus {
             background-color: lightblue;
         }
+        .sub, .content, .writer {
+            font-family: 'GmarketSansLight';
+        }
         .submit {
             border: none;
             background: #ecf0f1;

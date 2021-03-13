@@ -5,11 +5,11 @@
 <!--        <form name="contentForm" id="contentForm" method="post" action="/Boards/update/--><?//= esc( $SNO, 'url') ?><!--">-->
             <div>
                 <label for="sub"> 제목 </label>
-                <input class="sub" type="text" id="sub" name="sub" value="<?= esc( $SUBJECT_NAME, 'html') ?>" maxlength='20'>
+                <input class="sub" type="text" id="sub" name="sub" value="<?= esc( $SUBJECT_NAME, 'html') ?>" maxlength='20' placeholder="제목을 입력하세요. (20글자)">
             </div>
             <div>
                 <label for="content"> 내용 </label>
-                <textarea class="content" id="content" name="content" cols="30" rows="10" placeholder="" maxlength='200'><?= esc( $CONTENT, 'html') ?></textarea>
+                <textarea class="content" id="content" name="content" cols="30" rows="10" placeholder="내용을 입력하세요. (200글자)" maxlength='200'><?= esc( $CONTENT, 'html') ?></textarea>
             </div>
             <br>
             <div>
