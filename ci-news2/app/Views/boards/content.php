@@ -4,17 +4,17 @@
     <div class="sub">
       <div class="sub_divide">
         <div class="sub_content">
-          <label style="font-weight: bold"> 제목 </label>
-          <p><?= esc($SUBJECT_NAME, 'html') ?> </p>
+          <label> 제목 </label>
+          <p> <?= esc($SUBJECT_NAME, 'html') ?> </p>
         </div>
 
         <div class="writer">
-            <label style="font-weight: bold"> 작성자 </label>
+            <label> 작성자 </label>
             <p> <?= esc($WRITER, 'html') ?> </p>
         </div>
-        <div class="write">
-            <label style="font-weight: bold"> 작성일 </label>
-            <p><?= esc($DATE_CHAR, 'html') ?> </p>
+        <div class="writeDate">
+            <label> 작성일 </label>
+            <p> <?= esc($DATE_CHAR, 'html') ?> </p>
         </div>
       </div>
     </div>
@@ -23,22 +23,21 @@
 
     <div class="content">
       <div class="main_content">
-        <label style="font-weight: bolder"> 내용 </label>
+        <label> 내용 </label>
         <p> <?= esc($CONTENT, 'html') ?> </p>
-<!--                    <div id="viewer"><p>--><?//= esc($CONTENT, 'html') ?><!--</p></div>-->
       </div>
     </div>
 
     <div>
       <h5> <a class="edit" href="/Boards/edit/<?= esc($SNO, 'html') ?>"> 수정 </a></h5>
-      <h5> <a class="delete" onclick="remove()"> 삭제 </a></h5>
+      <h5> <a class="delete" onclick="removeContent()"> 삭제 </a></h5>
       <h5> <a class="goboard" href="/Boards"> 보드로 가기 </a></h5>
     </div>
   </div>
 </section>
 
 <script type="text/javascript">
-    function remove() {
+    function removeContent() {
         if(confirm("<?=$SNO?>번 게시글을 삭제하시겠습니까?")) {
             location.href = "/Boards/remove/<?=$SNO?>";
         } else {

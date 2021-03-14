@@ -8,6 +8,7 @@ use Exception;
 class Boards extends ResourcePresenter
 {
   protected $now;
+  protected $getPage;
 
   public function __construct()
   {
@@ -37,17 +38,17 @@ class Boards extends ResourcePresenter
     $totalPageTmp = $count / $pageSize;
     $totalPage = ceil($totalPageTmp); // 바인딩할 페이징 계산
 
-    $getPage = $this->request->getGet('page');
+    $this->getPage = $this->request->getGet('page');
 
-    $contentPaging = $RM->setContentPaging($getPage, $pageSize);
-    $data = $RM->getListBoard($contentPaging, $pageSize, $getPage);
+    $contentPaging = $RM->setContentPaging($this->getPage, $pageSize);
+    $data = $RM->getListBoard($contentPaging, $pageSize, $this->getPage);
 
     $result['list'] = $data['list'];
     $result['count'] = $totalPage;
 
     echo view('/header');
-    echo view('/boards/table', $result);
-    echo view('/boards/board');
+    echo view('/boards/table/table', $result);
+    echo view('/boards/table/board');
 	}
 
 	public function new()

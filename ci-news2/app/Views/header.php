@@ -43,6 +43,9 @@
             border-bottom: 1px solid #444444;
             padding: 5px;
         }
+        label {
+            font-weight: bolder;
+        }
         .home {
             font-family: 'GmarketSansLight';
             position: absolute;
@@ -106,6 +109,12 @@
         .paging, .newwrite, .gohome, .show{
             text-align: center;
             cursor: default;
+            margin: 3px;
+        }
+        .main_content p {
+            border-style: inset;
+            border-radius: 5px;
+            padding: 20px;
         }
         .paging a:hover, .newwrite:hover, .gohome:hover, .show:hover {
             cursor: pointer;
@@ -140,14 +149,20 @@
             color: black;
             transition: color, background 0.5s;
             border-radius: 2px;
-            margin: 2px;
-            padding: 2px;
         }
         #sub:focus, textarea:focus, .writer:focus {
             background-color: lightblue;
         }
         .sub, .content, .writer {
             font-family: 'GmarketSansLight';
+        }
+        .sub_divide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .sub_content, .writer, .writeDate {
+            margin: auto;
         }
         .submit {
             border: none;
