@@ -98,14 +98,11 @@ class ResourceModel extends Model {
     return $count;
   }
 
-  function getListBoard($setContentPaging = null, $pageSize, $getPage = null): array
+  function getListBoard($setContentPaging = null, $pageSize): array
   {
     /* DATABASE QUERY :
     * SELECT * FROM board WHERE $sno
     * */
-    if( isset($getPage) == false ) {
-        $getPage = $pageSize;
-    }
 
     $builder = $this->db->table('board');
     $builder->limit( $pageSize, $setContentPaging['last'] - $pageSize);
