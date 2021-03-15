@@ -66,7 +66,7 @@ $routes->post('Boards', 'Boards::create');
 $routes->post('Boards/remove/(.*)', 'Boards::remove/$1');
 
 
-$routes->get('sign', 'Register::index');
+$routes->get('sign', 'User::index');
 $routes->get('test', 'Test::index');
 /*
  * --------------------------------------------------------------------
