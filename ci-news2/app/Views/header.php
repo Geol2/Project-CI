@@ -6,6 +6,7 @@
     <meta name="description" content="The small framework with powerful features">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
 </head>
 <body>
     <style>
@@ -40,8 +41,9 @@
             font-size: 11px;
         }
         th, td {
+
             border-bottom: 1px solid #444444;
-            padding: 5px;
+            padding: 5px;S
         }
         label {
             font-weight: bolder;
@@ -78,11 +80,20 @@
         .head_name a:hover {
             cursor: pointer;
         }
+        .head_content {
+            font-family: 'GmarketSansLight';
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
         .join, .signup {
             padding: 10px;
         }
         .join a, .signup a{
             font-family: 'GmarketSansLight';
+        }
+        .join a:hover, .signup a:hover, .head_content a:hover {
+            cursor: pointer;
         }
         .chart {
             text-align: center;
@@ -96,6 +107,10 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            /*display: flex;*/
+            /*flex-direction: column;*/
+            /*justify-content: center;*/
+            /*align-items: center;*/
 
             background: white;
             border-radius: 10px;
@@ -197,13 +212,17 @@
         }
     </style>
 
-    <div class="head">
+  <div class="head">
 
-        <div class="head_log">
-            <div class="head_name">
-                <a href="/Home"> 검사관리시스템 </a>
-            </div>
-            <div class="join"> <a href="/login"> 로그인 </a> </div>
-            <div class="signup"> <a href="/sign"> 회원가입 </a> </div>
-        </div>
+  <div class="head_log">
+    <div class="head_name">
+      <a href="/Home"> 검사관리시스템 </a>
     </div>
+    <div class="head_content">
+      <a href="#"> 접수 </a>
+      <a href="/Boards"> 커뮤니티 </a>
+    </div>
+    <div class="join"> <a href="/login"> 로그인 </a> </div>
+    <div class="signup"> <a href="/sign"> 회원가입 </a> </div>
+  </div>
+</div>
