@@ -65,8 +65,14 @@ $routes->post('Boards', 'Boards::create');
 // 게시판 게시물 삭제
 $routes->post('Boards/remove/(.*)', 'Boards::remove/$1');
 
+// 게시판 회원가입
+$routes->get('sign', 'User::sign');
+$routes->post('sign/register', 'User::register');
 
-$routes->get('sign', 'User::index');
+// 게시판 로그인
+$routes->get('login', 'User::login');
+$routes->post('login/on', 'User::logon');
+
 $routes->get('test', 'Test::index');
 /*
  * --------------------------------------------------------------------

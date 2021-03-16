@@ -1,6 +1,6 @@
 <section>
   <section class="board">
-  <h1 class="chart_name"> 게시판 </h1>
+  <h1 class="chart_name"> 일반 토론장 </h1>
     <div class="chart">
       <table>
         <colgroup>
@@ -49,25 +49,25 @@
 //          echo '$count : '.$count.'<br>';
 //        ?>
 
-        <?php if( $start_page > 1 ): ?>
+        <?php if( $start_page > 1 ) { ?>
           <a class='move_btn' href="/Boards?page=<?=$prev_page?>">« 이전</a>
           <a class='pagenum' href="/Boards?page=<?=1?>">1</a> ...
-        <?php else: ?>
+        <?php } else { ?>
 <!--            <span class='move_btn disabled'>« 이전</span>-->
-        <?php endif ?>
+        <?php } ?>
 
-        <?php for( $p = $start_page; $p <= $end_page; $p++ ): ?>
-            <a class='pagenum <?= ( $p == $page )?"current":"" ?>' href="<?= "/Boards?page=$p" ?>">
+        <?php for( $p = $start_page; $p <= $end_page; $p++ ) { ?>
+            <a class='this' href="<?= "/Boards?page=$p" ?>">
               <?= $p ?>
             </a>
-        <?php endfor ?>
+        <?php } ?>
 
-        <?php if( $end_page < $count ): ?>
+        <?php if( $end_page < $count ) { ?>
             ... <a class='pagenum' href="<?= "/Boards?page=$count" ?>"><?= $count ?></a>
             <a class='move_btn' href="<?= "/Boards?page=$next_page" ?>">다음 »</a>
-        <?php else: ?>
+        <?php } else { ?>
 <!--            <span class='move_btn disabled'>다음 »</span>-->
-        <?php endif ?>
+        <?php } ?>
       </div>
 
       <div id="test"> </div>

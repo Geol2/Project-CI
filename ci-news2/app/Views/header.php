@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Board</title>
+    <title>검사관리시스템</title>
     <meta name="description" content="The small framework with powerful features">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
@@ -201,9 +201,9 @@
 
         <div class="head_log">
             <div class="head_name">
-                <a href="/Boards"> 게시판 </a>
+                <a href="/Home"> 검사관리시스템 </a>
             </div>
-            <div class="join"> <a href="#"> 로그인 </a> </div>
+            <div class="join"> <a href="/login"> 로그인 </a> </div>
             <div class="signup"> <a href="/sign"> 회원가입 </a> </div>
         </div>
     </div>

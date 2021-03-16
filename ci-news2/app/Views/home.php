@@ -1,5 +1,5 @@
 <div class="home">
-  <h1 class="home_name"> 🧑🏻‍💻 게시판 </h1>
+  <h1 class="home_name"> 🧑🏻‍💻 검사관리시스템 </h1>
   </br>
-  <a class="goboard" href="/Boards?page=1"> 입장하기 </a>
+  <a class="goboard" href="/Boards?page=1"> 일반 토론장 </a>
 </div>
