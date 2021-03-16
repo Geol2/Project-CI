@@ -5,12 +5,13 @@
       <table>
         <colgroup>
           <col width="5%"/>
-          <col width="10%"/>
+          <col width="5%"/>
           <col width="20%"/>
-          <col width="30%"/>
+          <col width="35%"/>
           <col width="10%"/>
           <col width="15%"/>
-          <col width="10%"/>
+          <col width="5%"/>
+          <col width="5%"/>
         </colgroup>
           <thead>
             <tr>
@@ -22,6 +23,7 @@
               <th> 작성자 </th>
               <th> 작성일 </th>
               <th> 보기 </th>
+              <th> 조회수 </th>
             </tr>
           </thead>
             <tbody>
@@ -34,8 +36,8 @@
                 <td> <?= $list[$i]['WRITER']; ?> </td>
                 <td> <?= $list[$i]['DATE_CHAR']; ?> </td>
                 <td> <a class='show' href='/Boards/<?= esc( $list[$i]['SNO'], 'url' ); ?>'> 보기 </a> </td>
+                <td> <?= $list[$i]['HIT']; ?> </td>
               </tr>
-
             <?php } ?>
             </tbody>
       </table>
@@ -72,3 +74,9 @@
 
       <div id="test"> </div>
     </div>
+
+  <script type="text/javascript">
+      function hit(num) {
+
+      }
+  </script>

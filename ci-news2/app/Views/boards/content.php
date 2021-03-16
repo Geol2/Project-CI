@@ -9,12 +9,16 @@
         </div>
 
         <div class="writer">
-            <label> 작성자 </label>
-            <p> <?= esc($WRITER, 'html') ?> </p>
+          <label> 작성자 </label>
+          <p> <?= esc($WRITER, 'html') ?> </p>
         </div>
         <div class="writeDate">
-            <label> 작성일 </label>
-            <p> <?= esc($DATE_CHAR, 'html') ?> </p>
+          <label> 작성일 </label>
+          <p> <?= esc($DATE_CHAR, 'html') ?> </p>
+        </div>
+        <div class="writeDate">
+          <label> 조회 수 </label>
+          <p> <?= esc($HIT, 'html') ?> </p>
         </div>
       </div>
     </div>

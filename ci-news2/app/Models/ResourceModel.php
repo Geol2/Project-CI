@@ -45,6 +45,7 @@ class ResourceModel extends Model {
     $builder->set("CONTENT", $content);
     $builder->set("WRITER", $writer);
     $builder->set("DATE_CHAR", $this->now);
+    $builder->set("HIT", 0);
     $builder->where("board");
     $builder->insert();
     $this->db->close();
@@ -129,5 +130,20 @@ class ResourceModel extends Model {
     $builder = $this->db->table("board");
     $builder->delete(['SNO' => $sno]);
     $this->db->close();
+  }
+
+  function hitContent( $hit, $sno ) {
+    /*
+     * UPDATE `board` SET hit = hit + 1 where `sno` = $sno
+     */
+    $data = [
+      'HIT' => $hit + 1
+    ];
+
+    $builder = $this->db->table("board");
+    $builder->where('SNO', $sno);
+    $builder->update($data);
+
+    return $data['HIT'];
   }
 }

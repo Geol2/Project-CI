@@ -16,6 +16,10 @@
                 <label for="writer"> 작성자 </label>
                 <input class="writer" type="text" id="writer" name="writer" maxlength='20' value="<?= esc( $WRITER, 'html') ?>" readonly>
             </div>
+            <div>
+                <label for="hit"> 조회수 </label>
+                <input class="hit" type="text" id="hit" name="hit" maxlength='20' value="<?= esc( $HIT, 'html') ?>" readonly>
+            </div>
             <div class="divide">
                 <div class="divsubmit">
                     <input class="submit" type="submit" onclick="submit()" value="전송">
@@ -34,6 +38,7 @@
             let sub = document.getElementById("sub");
             let content = document.getElementById("content");
             let writer = document.getElementById("writer");
+            let hit = document.getElementById("hit");
 
             let form = document.createElement("form");
             form.setAttribute("charset", "UTF-8");
@@ -43,6 +48,7 @@
             let inputHiddenSub = document.createElement("input");
             let inputHiddenContent = document.createElement("input");
             let inputHiddenWriter = document.createElement("input");
+            let inputHiddenHit = document.createElement("input");
 
             inputHiddenSub.setAttribute("type", "hidden");
             inputHiddenSub.setAttribute("name", "sub");
@@ -56,9 +62,14 @@
             inputHiddenWriter.setAttribute("name", "writer");
             inputHiddenWriter.setAttribute("value", writer.value);
 
+            inputHiddenHit.setAttribute("type", "hidden");
+            inputHiddenHit.setAttribute("name", "hit");
+            inputHiddenHit.setAttribute("value", hit.value);
+
             form.appendChild(inputHiddenSub);
             form.appendChild(inputHiddenContent);
             form.appendChild(inputHiddenWriter);
+            form.appendChild(inputHiddenHit);
 
             document.body.appendChild(form);
             form.submit();

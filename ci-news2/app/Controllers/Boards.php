@@ -46,6 +46,7 @@ class Boards extends ResourcePresenter
 
     $contentPaging = $RM->setContentPaging($this->getPage, $pageSize); // 각 페이지당 게시글의 수
     $data = $RM->getListBoard($contentPaging, $pageSize); // 한 페이지 당 게시글 데이터 분리
+                                                          // 페이지 출력 로직..;
 
     $result['list'] = $data['list'];        // 게시글 데이터 배열
     $result['count'] = intval($totalPage);  // 총 페이지 카운트 수
@@ -67,6 +68,7 @@ class Boards extends ResourcePresenter
       echo view('boards/new' );
     }
 
+  /* 새 단건 글 작성 */
   public function create(): ResponseInterface
   {
     // echo 'function create exec';
@@ -97,12 +99,16 @@ class Boards extends ResourcePresenter
     $data = $RM->getBoard($sno);
 
     $result = array(
-        'SNO' => $data[0]['SNO'],
-        'SUBJECT_NAME' => $data[0]['SUBJECT_NAME'],
-        'CONTENT' => $data[0]['CONTENT'],
-        'WRITER' => $data[0]['WRITER'],
-        'DATE_CHAR' => $data[0]['DATE_CHAR']
+      'SNO' => $data[0]['SNO'],
+      'SUBJECT_NAME' => $data[0]['SUBJECT_NAME'],
+      'CONTENT' => $data[0]['CONTENT'],
+      'WRITER' => $data[0]['WRITER'],
+      'DATE_CHAR' => $data[0]['DATE_CHAR'],
+      'HIT' => $data[0]['HIT']
     );
+
+    // 조회 수 증가 카운트 하는 부분.
+    $result['HIT'] = $RM->hitContent($result['HIT'], $result['SNO']);
 
     echo view('/header');
     echo view("/Boards/content", $result);
@@ -118,7 +124,8 @@ class Boards extends ResourcePresenter
         'SUBJECT_NAME' => $data[0]['SUBJECT_NAME'],
         'CONTENT' => $data[0]['CONTENT'],
         'WRITER' => $data[0]['WRITER'],
-        'DATE_CHAR' => $data[0]['DATE_CHAR']
+        'DATE_CHAR' => $data[0]['DATE_CHAR'],
+        'HIT' => $data[0]['HIT']
     );
 
     echo view('/header');
@@ -135,13 +142,15 @@ class Boards extends ResourcePresenter
     $content = $request->getPost('content');
     $writer = $request->getPost('writer');
     $date = $this->now;
+    $hit = $request->getPost('hit');
 
     $result = array(
         'SNO' => $sno,
         'SUBJECT_NAME' => $sub,
         'CONTENT' => $content,
         'WRITER' => $writer,
-        'DATE_CHAR' => $date
+        'DATE_CHAR' => $date,
+        'HIT' => $hit
     );
 
     $RM = new ResourceModel();
