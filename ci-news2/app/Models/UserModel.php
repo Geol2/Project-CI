@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 class UserModel extends Model {
   protected $db;
 
-  protected $table = "user";
+  protected $table = "users";
   protected $allowedFields = ['SNO', 'SUBJECT_NAME', 'COTNENT', 'WRITER', 'DATE_CHAR'];
 
   protected $returnType =  'string';

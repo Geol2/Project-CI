@@ -1,6 +1,6 @@
 <?php namespace App\Controllers;
 
-use App\Models\ResourceModel;
+use App\Models\BoardModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\RESTful\ResourcePresenter;
 use Exception;
@@ -8,7 +8,6 @@ use Exception;
 class Boards extends ResourcePresenter
 {
   protected $now;
-  protected $getPage;
 
   public function __construct()
   {
@@ -26,39 +25,28 @@ class Boards extends ResourcePresenter
     $this->now = date("Y-m-d H:i:s", $unix); // UNIX 타임스탬프를 년/월/일 시간:분:초 로 변경.
   }
 
+  /*
+   * Boards 기본 인덱스 컨트롤러
+   * */
 	public function index()
   {
-    // $request = service('request');
 
     // 게시판 데이터 불러오기
-    $RM = new ResourceModel();
-    $count = $RM->getBoardCount();
-    $pageSize = 5; // 한 페이지당 게시글 수 설정 변수
-    $block = 1; // getPage를 기준으러 좌우로 나타낼 개수
+    $boardModel = new BoardModel();
 
-    $totalPageTmp = $count / $pageSize;
-    $totalPage = ceil($totalPageTmp); // 바인딩할 페이징 계산
+    $data = [
+      'content' => $boardModel->paginate(1),
+      'pager' => $boardModel->pager,
 
-    $this->getPage = $this->request->getGet('page');
-    if($this->getPage == null) {
-      $this->getPage = 1;
+    ];
+
+    $page = $this->request->getGet('page');
+    if(isset($page)) {
+      array_push($data, $page);
     }
 
-    $contentPaging = $RM->setContentPaging($this->getPage, $pageSize); // 각 페이지당 게시글의 수
-    $data = $RM->getListBoard($contentPaging, $pageSize); // 한 페이지 당 게시글 데이터 분리
-                                                          // 페이지 출력 로직..;
-
-    $result['list'] = $data['list'];        // 게시글 데이터 배열
-    $result['count'] = intval($totalPage);  // 총 페이지 카운트 수
-
-    $result['start_page'] = max( $this->getPage - $block, 1 );
-    $result['end_page'] = min( $this->getPage + $block, $result['count'] );
-    $result['prev_page'] = max( $result['start_page'] - $block - 1, 1 );
-    $result['next_page'] = min ( $result['end_page'] + $block + 1, $result['count'] );
-    $result['page'] = $this->getPage;
-
     echo view('/header');
-    echo view('/boards/table/table', $result);
+    echo view('/boards/table/table', $data);
     echo view('/boards/table/board');
 	}
 
@@ -84,7 +72,7 @@ class Boards extends ResourcePresenter
         'WRITER' => $writer
     );
 
-    $RM = new ResourceModel();
+    $RM = new BoardModel();
     $RM->setDataBoard($data);
 
     echo view('/header');

@@ -126,6 +126,10 @@
             cursor: default;
             margin: 3px;
         }
+        .pagination li {
+          list-style: none;
+          display: inline;
+        }
         .main_content p {
             border-style: inset;
             border-radius: 5px;
@@ -192,7 +196,7 @@
             background: #7f8c8d;
             color: white;
         }
-        input[type=text], textarea {
+        input[type=text], input[type=password], textarea {
             width: 100%;
             padding: 12px 20px;
             margin: 8px 0;

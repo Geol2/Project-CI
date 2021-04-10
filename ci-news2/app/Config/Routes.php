@@ -79,6 +79,10 @@ $routes->post('sign/register', 'User::register');
 $routes->get('login', 'User::login');
 $routes->post('login/on', 'User::logon');
 
+// 로그인 인증 처리
+$routes->post('Auth', 'Auth::index');
+$routes->post('Auth/login', 'Auth::login');
+
 /*
  * -----------------------------------------------------------
  * ㅣ                    테 스 트                            ㅣ
