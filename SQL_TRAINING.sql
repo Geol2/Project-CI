@@ -40,7 +40,7 @@ SET SQL_SAFE_UPDATES = 1; # safe mode ON.
 
 /* create admin id */
 insert into news.user(id, pwd, name, mail) values ('admin', md5('12345'), 'admin', 'big9402@gmail.com');
-insert into news.board(SUBJECT_NAME, content, WRITER, DATE_CHAR, HIT) values ('力格', '臂 郴侩', '包府磊', '2021-03-06 09:27');
+insert into news.board(SUBJECT_NAME, content, WRITER, DATE_CHAR, HIT) values ('力格', '臂 郴侩', '包府磊', '2021-03-06 09:27', 0);
 
 update board set HIT=HIT+1 where sno = 2;
 
