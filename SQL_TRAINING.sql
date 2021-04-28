@@ -38,7 +38,7 @@ SET SQL_SAFE_UPDATES = 1; # safe mode ON.
 
 /* create admin id */
 insert into news.users(user_name, user_email, user_password) values ('admin', 'big9401@gmail.com', md5('12345'));
-insert into news.board(SUBJECT_NAME, content, WRITER, DATE_CHAR, HIT) values ('Á¦¸ñ', '±Û ³»¿ë', '°ü¸®ÀÚ', '2021-03-06 09:27');
+insert into news.board(SUBJECT_NAME, content, WRITER, DATE_CHAR, HIT) values ('admin', 'big9401', '12345', '2021-03-06 09:27');
 
 update board set HIT=HIT+1 where sno = 2;
 
