@@ -81,6 +81,7 @@ class Boards extends ResourcePresenter
   /* @param $id : 게시글 번호
    * @throws \ReflectionException
    * @author GEOL <big9401@gmail.com>
+   * 게시글 한 개를 클릭했을 때 따로 보여주는 컨트롤러
    */
   function show($id = null)
   {
