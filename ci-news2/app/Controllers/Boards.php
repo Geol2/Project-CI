@@ -37,7 +37,6 @@ class Boards extends ResourcePresenter
     $data = [
       'content' => $boardModel->paginate(2),
       'pager' => $boardModel->pager,
-
     ];
 
     $page = $this->request->getGet('page');
@@ -51,10 +50,10 @@ class Boards extends ResourcePresenter
 	}
 
 	public function new()
-    {
-      echo view('/header');
-      echo view('boards/new' );
-    }
+  {
+    echo view('/header');
+    echo view('boards/new' );
+  }
 
   /* 새 단건 글 작성 */
   public function create(): ResponseInterface
@@ -67,9 +66,9 @@ class Boards extends ResourcePresenter
     $writer = $request->getPost('writer');
 
     $data = array(
-        'SUB' => $sub,
-        'CONTENT' => $content,
-        'WRITER' => $writer
+      'SUB' => $sub,
+      'CONTENT' => $content,
+      'WRITER' => $writer
     );
 
     $RM = new BoardModel();
@@ -108,12 +107,12 @@ class Boards extends ResourcePresenter
     $data = $RM->getBoard($id); // 수정할 데이터 불러오기
 
     $result = array(
-        'SNO' => $data[0]['SNO'],
-        'SUBJECT_NAME' => $data[0]['SUBJECT_NAME'],
-        'CONTENT' => $data[0]['CONTENT'],
-        'WRITER' => $data[0]['WRITER'],
-        'DATE_CHAR' => $data[0]['DATE_CHAR'],
-        'HIT' => $data[0]['HIT']
+      'SNO' => $data[0]['SNO'],
+      'SUBJECT_NAME' => $data[0]['SUBJECT_NAME'],
+      'CONTENT' => $data[0]['CONTENT'],
+      'WRITER' => $data[0]['WRITER'],
+      'DATE_CHAR' => $data[0]['DATE_CHAR'],
+      'HIT' => $data[0]['HIT']
     );
 
     echo view('/header');
@@ -133,12 +132,12 @@ class Boards extends ResourcePresenter
     $hit = $request->getPost('hit');
 
     $result = array(
-        'SNO' => $sno,
-        'SUBJECT_NAME' => $sub,
-        'CONTENT' => $content,
-        'WRITER' => $writer,
-        'DATE_CHAR' => $date,
-        'HIT' => $hit
+      'SNO' => $sno,
+      'SUBJECT_NAME' => $sub,
+      'CONTENT' => $content,
+      'WRITER' => $writer,
+      'DATE_CHAR' => $date,
+      'HIT' => $hit
     );
 
     $RM = new ResourceModel();
@@ -149,7 +148,6 @@ class Boards extends ResourcePresenter
 
   function remove($id = null): ResponseInterface
   {
-
     $RM = new ResourceModel();
     $RM->rmvDataBoard($id);
 

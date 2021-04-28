@@ -4,8 +4,8 @@ namespace App\Models;
 use CodeIgniter\Model as Model;
 
 class BoardModel extends Model {
-  protected $table = "board";
-  protected $primaryKey= "SNO";
+  protected string $table = "board";
+  protected string $primaryKey= "SNO";
 
   protected bool $useAutoIncrement = true;
 //  protected string $returnType = 'array';
