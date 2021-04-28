@@ -25,8 +25,10 @@ class Boards extends ResourcePresenter
     $this->now = date("Y-m-d H:i:s", $unix); // UNIX 타임스탬프를 년/월/일 시간:분:초 로 변경.
   }
 
-  /*
-   * Boards 기본 인덱스 컨트롤러
+  /* @param : void
+   * @author : GEOL <big9401@gmail.com>
+   * @return : view
+   * 게시판 메인 및 페이지네이션 라이브러리 사용
    * */
 	public function index()
   {
