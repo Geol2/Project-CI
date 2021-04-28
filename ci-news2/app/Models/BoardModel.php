@@ -14,8 +14,4 @@ class BoardModel extends Model {
   protected array $validationRules    = [];
   protected array $validationMessages = [];
   protected bool $skipValidation     = false;
-<<<<<<< HEAD
-=======
-
->>>>>>> 00bb7c311c0bdcd390edb62184209e40bf7ed5c7
 }
