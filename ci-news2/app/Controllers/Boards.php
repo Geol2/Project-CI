@@ -90,8 +90,7 @@ class Boards extends ResourcePresenter
     $data = $RM->find($sno);
 
     // 조회 수 증가 카운트 하는 부분.
-    $hit_tmp = $RM->find($sno);
-    $hit = $hit_tmp['HIT'] + 1;
+    $hit = $data['HIT'] + 1;
 
     $result = array(
       'SNO' => $data['SNO'],
