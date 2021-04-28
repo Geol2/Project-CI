@@ -78,24 +78,31 @@ class Boards extends ResourcePresenter
     return $this->response->redirect('/Boards');
   }
 
+  /* @param $id : 게시글 번호
+   * @throws \ReflectionException
+   * @author GEOL <big9401@gmail.com>
+   */
   function show($id = null)
   {
     $sno = $id;
     // 게시판 한 개 데이터 불러오기
-    $RM = new ResourceModel();
-    $data = $RM->getBoard($sno);
-
-    $result = array(
-      'SNO' => $data[0]['SNO'],
-      'SUBJECT_NAME' => $data[0]['SUBJECT_NAME'],
-      'CONTENT' => $data[0]['CONTENT'],
-      'WRITER' => $data[0]['WRITER'],
-      'DATE_CHAR' => $data[0]['DATE_CHAR'],
-      'HIT' => $data[0]['HIT']
-    );
+    $RM = new BoardModel();
+    $data = $RM->find($sno);
 
     // 조회 수 증가 카운트 하는 부분.
-    $result['HIT'] = $RM->hitContent($result['HIT'], $result['SNO']);
+    $hit_tmp = $RM->find($sno);
+    $hit = $hit_tmp['HIT'] + 1;
+
+    $result = array(
+      'SNO' => $data['SNO'],
+      'SUBJECT_NAME' => $data['SUBJECT_NAME'],
+      'CONTENT' => $data['CONTENT'],
+      'WRITER' => $data['WRITER'],
+      'DATE_CHAR' => $data['DATE_CHAR'],
+      'HIT' => $hit
+    );
+    // 실질적으로 증가하는 부분.
+    $RM->update($sno, $result);
 
     echo view('/header');
     echo view("/Boards/content", $result);

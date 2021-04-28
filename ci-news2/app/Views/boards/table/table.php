@@ -43,7 +43,7 @@ use CodeIgniter\Pager\PagerRenderer;
                   <td> <?= $this->{'data'}['content'][$i]['CONTENT'] ?> </td>
                   <td> <?= $this->{'data'}['content'][$i]['WRITER'] ?> </td>
                   <td> <?= $this->{'data'}['content'][$i]['DATE_CHAR'] ?> </td>
-                  <td> <a href="/Boards"> 보기 </a>  </td>
+                  <td> <a href="/Boards/<?= $this->{'data'}['content'][$i]['SNO'] ?>"> 보기 </a>  </td>
                   <td> <?= $this->{'data'}['content'][$i]['HIT'] ?></td>
                 </tr>
               <?php } ?>
