@@ -4,11 +4,8 @@ namespace App\Models;
 use CodeIgniter\Model as Model;
 
 class BoardModel extends Model {
-  protected $now;
-  protected $db;
-
-  protected string $table = "board";
-  protected string $primaryKey= "SNO";
+  protected $table = "board";
+  protected $primaryKey= "SNO";
 
   protected bool $useAutoIncrement = true;
 //  protected string $returnType = 'array';
@@ -17,4 +14,8 @@ class BoardModel extends Model {
   protected array $validationRules    = [];
   protected array $validationMessages = [];
   protected bool $skipValidation     = false;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 00bb7c311c0bdcd390edb62184209e40bf7ed5c7
 }
