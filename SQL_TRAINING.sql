@@ -22,15 +22,13 @@ CREATE TABLE board (
 	updated_at timestamp not null default current_timestamp on update current_timestamp
 );
 
-create table user (
-	SNO INT(3) not null auto_increment primary key,
-	ID CHAR(10) not null,
-	PWD CHAR(32) not null,
-	NAME CHAR(10) not null,
-	MAIL CHAR(30) not null unique key,
-	CREATED_AT timestamp not null default current_timestamp,
-	UPDATED_AT timestamp not null default current_timestamp on update current_timestamp
-);
+CREATE TABLE users(
+    SNO INT PRIMARY KEY AUTO_INCREMENT,
+    user_name VARCHAR(100),
+    user_email VARCHAR(100),
+    user_password VARCHAR(200),
+    user_created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=INNODB;
 
 SET SQL_SAFE_UPDATES = 0; # safe mode OFF.
 DELETE FROM board;
@@ -39,13 +37,13 @@ SET SQL_SAFE_UPDATES = 1; # safe mode ON.
 
 
 /* create admin id */
-insert into news.user(id, pwd, name, mail) values ('admin', md5('12345'), 'admin', 'big9402@gmail.com');
-insert into news.board(SUBJECT_NAME, content, WRITER, DATE_CHAR, HIT) values ('Á¦¸ñ', '±Û ³»¿ë', '°ü¸®ÀÚ', '2021-03-06 09:27');
+insert into news.users(user_name, user_email, user_password) values ('admin', 'big9401@gmail.com', md5('12345'));
+insert into news.board(SUBJECT_NAME, content, WRITER, DATE_CHAR, HIT) values ('ÃÂ¦Â¸Ã±', 'Â±Ã› Â³Â»Â¿Ã«', 'Â°Ã¼Â¸Â®Ã€Ãš', '2021-03-06 09:27');
 
 update board set HIT=HIT+1 where sno = 2;
 
 select * from board;
-select * from user;
+select * from users;
 
 drop table board;
 drop table user;

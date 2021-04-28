@@ -35,7 +35,7 @@ class Boards extends ResourcePresenter
     $boardModel = new BoardModel();
 
     $data = [
-      'content' => $boardModel->paginate(1),
+      'content' => $boardModel->paginate(2),
       'pager' => $boardModel->pager,
 
     ];
