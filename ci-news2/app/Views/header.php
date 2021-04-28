@@ -114,7 +114,7 @@
 
             background: white;
             border-radius: 10px;
-            padding: 50px;
+            padding: 20px;
             min-width: 500px;
             min-height: 100px;
         }
