@@ -1,11 +1,17 @@
 const express = require('express');
 const app = express();
 
-const webSocket = require('./socket');
-const indexRouter = require('./routes');
+const http = require('http');
 
-app.listen(app.get('port'), () => {
-  console.log(app.get('port'), '번 포트에서 대기 중');
+//const webSocket = require('./socket');
+//const indexRouter = require('./routes');
+
+//app.use('/', indexRouter);
+
+app.get('/', function (req, res) {
+  res.send('GET request to homepage')
 });
 
-webSocket(server);
+http.createServer(app).listen(8080);
+
+//webSocket(server);
