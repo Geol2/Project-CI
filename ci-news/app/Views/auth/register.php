@@ -6,10 +6,12 @@
       <div>
         <label for="id"> 아이디 </label>
         <input name="id" id="id" type="text" placeholder="아이디" maxlength='20'>
+        <button onclick="dupId()" class="check btn"> 아이디 확인 </button>
       </div>
       <div class="mail">
         <label for="mail"> 이메일 </label>
         <input name="mail" id="mail" type="text" placeholder="아이디" maxlength='20'>
+        <button onclick="dupMail()" class="check btn"> 이메일 확인 </button>
         <!--                <button> 이메일 인증 </button>-->
       </div>
       <div>
@@ -38,7 +40,6 @@
 
 <script type="text/javascript">
   let checkPassword = false;
-
   function dupPassword() {
     let password = document.getElementById("password").value;
     let password_re = document.getElementById("password_re").value;
@@ -52,8 +53,6 @@
   }
 
   function submit() {
-    debugger;
-
     if(checkPassword === false) {
       alert("비밀번호 확인이 필요합니다.");
     } else {
@@ -92,7 +91,7 @@
       form.appendChild(inputHiddenPassword);
       form.appendChild(inputHiddenMail);
       form.appendChild(inputHiddenName);
-      
+
       alert("회원가입이 완료되었습니다.");
 
       document.body.appendChild(form);

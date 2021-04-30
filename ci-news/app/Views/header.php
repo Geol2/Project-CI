@@ -191,6 +191,19 @@
     width: 600px;
   }
 
+  .write_class a {
+    color: black;
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 5px;
+    margin: 2px;
+  }
+
+  .write_class a:hover {
+    background: #7f8c8d;
+    color: white;
+  }
+
   .writer {
     text-decoration: none;
     color: black;
@@ -220,7 +233,7 @@
     border: none;
   }
 
-  .submit, .password {
+  .submit, .password, .btn {
     border: none;
     background: #ecf0f1;
     font-family: "Gmarket Sans";
@@ -246,7 +259,9 @@
     font-size: 13px;
   }
 
-  .cancel:hover, .edit:hover, .delete:hover, .goboard:hover, .submit:hover, .password:hover {
+  .cancel:hover, .edit:hover, .delete:hover,
+  .goboard:hover, .submit:hover, .password:hover,
+  .btn:hover {
     background: #7f8c8d;
     color: white;
   }
