@@ -40,4 +40,20 @@ class Validation
 	//--------------------------------------------------------------------
 	// Rules
 	//--------------------------------------------------------------------
+
+  /*
+   * @var string
+   */
+  public array $signup = array(
+    'id' => 'required',
+    'password' => 'required',
+    'pass_confirm' => 'required|matches[password]'
+  );
+
+  public $signup_errors = array(
+    'id' => array(
+      'required'    => 'You must choose a username.',
+    )
+  );
+
 }

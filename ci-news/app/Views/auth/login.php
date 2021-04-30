@@ -1,3 +1,15 @@
+<?php
+  /* @var $validation
+   * */
+  $validation->setRules([
+    'id' => 'required',
+    'password' => 'required|min_length[10]'
+  ]);
+  echo '<pre>';
+  var_dump($validation);
+  echo '</pre>';
+?>
+
 <section>
   <div class="write_class">
     <h1> 로그인 (구현예정) </h1>
@@ -5,7 +17,7 @@
     <form name="loginForm" id="registerForm" method="post" action="/Auth/login">
       <div>
         <label for="id"> 아이디 </label>
-        <input name="id" id="id" type="text"  placeholder="아이디" maxlength='20' class="form-control <?= ($validation->hasError('email')) ? 'is-invalid' : '' ?>" >
+        <input name="id" id="id" type="text"  placeholder="아이디" maxlength='20' >
       </div>
       <div>
         <label for="password"> 비밀번호 </label>
