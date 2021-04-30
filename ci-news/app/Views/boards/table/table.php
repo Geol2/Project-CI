@@ -1,3 +1,8 @@
+<?php
+  /* @param object $pager
+   * @param object $this
+   * */
+?>
 <section>
   <section class="board">
   <h1 class="chart_name"> 일반 토론장 </h1>
