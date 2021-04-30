@@ -9,13 +9,12 @@ class Boards extends ResourcePresenter
 {
   protected $now;
 
+  /* @see 헬퍼 로드 vendor\CodeIgniter4\system\helpers\date_helper.php
+   * "_help" 를 제외하고 helper('date')., "_help" 를 제외하고 helper('date').
+   * 많은 기능이 'vendor\CodeIgniter4\system\I18n' 모듈로 이동됨.
+   */
   public function __construct()
   {
-    /* 헬퍼 로드
-    * vendor\CodeIgniter4\system\helpers\date_helper.php
-    * "_help" 를 제외하고 helper('date').
-    * 많은 기능이 'vendor\CodeIgniter4\system\I18n' 모듈로 이동됨.
-    */
     helper('date');
     try {
       $unix = now('Asia/Seoul'); // 현재시간 : UNIX 타임 스탬프
@@ -25,9 +24,10 @@ class Boards extends ResourcePresenter
     $this->now = date("Y-m-d H:i:s", $unix); // UNIX 타임스탬프를 년/월/일 시간:분:초 로 변경.
   }
 
-  /* @param : void
-   * @author : GEOL <big9401@gmail.com>
-   * @return : int
+  /* @param void
+   * @author GEOL <big9401@gmail.com>
+   * @return int
+   * @see 게시판 테이블
    * */
 	public function index(): int
   {
@@ -45,10 +45,16 @@ class Boards extends ResourcePresenter
     return 0;
 	}
 
-	public function new()
+  /* @param void
+   * @author GEOL <big9401@gmail.com>
+   * @return int 0
+   * @see 새글 작성
+   */
+	public function new(): int
   {
     echo view('/header');
     echo view('boards/new' );
+    return 0;
   }
 
   /* 새 단건 글 작성 */
@@ -74,10 +80,11 @@ class Boards extends ResourcePresenter
     return $this->response->redirect('/Boards');
   }
 
-  /* @param $id : 게시글 번호
+  /* @param string $id : 게시글 번호
+   * @return int 0
    * @throws \ReflectionException
    * @author GEOL <big9401@gmail.com>
-   * 게시글 한 개를 클릭했을 때 따로 보여주는 컨트롤러
+   * @see 게시글 한 개를 보여줌.
    */
   function show($id = null)
   {
@@ -97,29 +104,37 @@ class Boards extends ResourcePresenter
       'DATE_CHAR' => $data['DATE_CHAR'],
       'HIT' => $hit
     );
-    // 실질적으로 증가하는 부분.
+    
+    // 카운트 증가하는 부분.
     $RM->update($sno, $result);
 
     echo view('/header');
     echo view("/Boards/content", $result);
+    return 0;
   }
 
-  function edit($id = null) {
+  /* @param string $id
+   * @return int 0
+   * @author GEOL <big9401@gmail.com>
+   * @see 게시글 한개 수정
+   */
+  function edit($id = null) : int {
     // echo "function edit";
-    $RM = new ResourceModel();
-    $data = $RM->getBoard($id); // 수정할 데이터 불러오기
+    $RM = new BoardModel();
+    $data = $RM->find($id); // 수정할 데이터 불러오기
 
     $result = array(
-      'SNO' => $data[0]['SNO'],
-      'SUBJECT_NAME' => $data[0]['SUBJECT_NAME'],
-      'CONTENT' => $data[0]['CONTENT'],
-      'WRITER' => $data[0]['WRITER'],
-      'DATE_CHAR' => $data[0]['DATE_CHAR'],
-      'HIT' => $data[0]['HIT']
+      'SNO' => $data['SNO'],
+      'SUBJECT_NAME' => $data['SUBJECT_NAME'],
+      'CONTENT' => $data['CONTENT'],
+      'WRITER' => $data['WRITER'],
+      'DATE_CHAR' => $data['DATE_CHAR'],
+      'HIT' => $data['HIT']
     );
 
     echo view('/header');
     echo view("/Boards/edit", $result );
+    return 0;
   }
 
   function update($id = null): ResponseInterface
