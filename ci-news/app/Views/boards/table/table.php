@@ -1,6 +1,6 @@
 <?php
-  /* @param object $pager
-   * @param object $this
+  /* @var object $pager
+   * @var object $this
    * */
 ?>
 <section>
@@ -20,7 +20,7 @@
         </colgroup>
           <thead>
             <tr>
-              <th> <input id="allCheck" type="checkbox" value="ALL"> </th>
+              <th><label for="allCheck"></label><input id="allCheck" type="checkbox" value="ALL"> </th>
               <!-- 위에 체크박스 클릭 시 아래의 체크박스 전체 선택/해제 토글 -->
               <th> 번호 </th>
               <th> 제목 </th>
@@ -32,13 +32,9 @@
             </tr>
           </thead>
             <tbody>
-              <?php for($i = count($this->{'data'}['content']) - 1; $i >= 0 ; $i--) { ?>
+              <?php for($i = count($this->{'data'}['content']) - 1; $i >= 0; $i--) { ?>
                 <tr>
-                  <td>
-                    <label>
-                      <input type="checkbox" />
-                    </label>
-                  </td>
+                  <td><label><input type="checkbox" /></label></td>
                   <td> <?= $this->{'data'}['content'][$i]['SNO'] ?> </td>
                   <td> <?= $this->{'data'}['content'][$i]['SUBJECT_NAME'] ?> </td>
                   <td> <?= $this->{'data'}['content'][$i]['CONTENT'] ?> </td>
