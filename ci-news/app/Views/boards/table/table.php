@@ -1,11 +1,3 @@
-<?php
-use CodeIgniter\Pager\PagerRenderer;
-
-/**
- * @var PagerRenderer $pager
- */
-?>
-
 <section>
   <section class="board">
   <h1 class="chart_name"> 일반 토론장 </h1>
@@ -35,7 +27,7 @@ use CodeIgniter\Pager\PagerRenderer;
             </tr>
           </thead>
             <tbody>
-              <?php for($i = 0; $i < count($this->{'data'}['content']); $i++) { ?>
+              <?php for($i = count($this->{'data'}['content']) - 1; $i >= 0 ; $i--) { ?>
                 <tr>
                   <td>
                     <label>
