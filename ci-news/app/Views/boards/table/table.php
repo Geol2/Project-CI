@@ -35,14 +35,18 @@ use CodeIgniter\Pager\PagerRenderer;
             </tr>
           </thead>
             <tbody>
-              <?php for($i = 0; $i<count($this->{'data'}['content']); $i++) { ?>
+              <?php for($i = 0; $i < count($this->{'data'}['content']); $i++) { ?>
                 <tr>
-                  <td> <input type="checkbox" /> </td>
+                  <td>
+                    <label>
+                      <input type="checkbox" />
+                    </label>
+                  </td>
                   <td> <?= $this->{'data'}['content'][$i]['SNO'] ?> </td>
                   <td> <?= $this->{'data'}['content'][$i]['SUBJECT_NAME'] ?> </td>
                   <td> <?= $this->{'data'}['content'][$i]['CONTENT'] ?> </td>
                   <td> <?= $this->{'data'}['content'][$i]['WRITER'] ?> </td>
-                  <td> <?= $this->{'data'}['content'][$i]['DATE_CHAR'] ?> </td>
+                  <td> <?= $this->{'data'}['content'][$i]['created_at'] ?> </td>
                   <td> <a href="/Boards/<?= $this->{'data'}['content'][$i]['SNO'] ?>"> 보기 </a>  </td>
                   <td> <?= $this->{'data'}['content'][$i]['HIT'] ?></td>
                 </tr>
