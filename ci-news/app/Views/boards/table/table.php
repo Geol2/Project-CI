@@ -39,7 +39,7 @@
                   <td> <?= $this->{'data'}['content'][$i]['CONTENT'] ?> </td>
                   <td> <?= $this->{'data'}['content'][$i]['WRITER'] ?> </td>
                   <td> <?= $this->{'data'}['content'][$i]['created_at'] ?> </td>
-                  <td> <a href="/Boards/<?= $this->{'data'}['content'][$i]['SNO'] ?>"> 보기 </a>  </td>
+                  <td > <a class="table show" href="/Boards/<?= $this->{'data'}['content'][$i]['SNO'] ?>"> 보기 </a>  </td>
                   <td> <?= $this->{'data'}['content'][$i]['HIT'] ?></td>
                 </tr>
               <?php } ?>
