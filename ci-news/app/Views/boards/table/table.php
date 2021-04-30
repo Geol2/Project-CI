@@ -58,10 +58,4 @@ use CodeIgniter\Pager\PagerRenderer;
           <?= $pager->links(); ?>
         </nav>
       </div>
-
-      <div id="test"> </div>
     </div>
-
-  <script type="text/javascript">
-
-  </script>
