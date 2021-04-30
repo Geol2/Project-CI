@@ -85,17 +85,16 @@ class Auth extends Controller {
     $hash_pwd = hash('sha512', $pwd);
 
 
-//    $UM = new UserModel();
-//    if ( $UM->get($id)->where('PWD', $hash_pwd) ) {
-//
-//    } else {
-//
-//    }
-
-    $session = $this->createSession();
-//    var_dump($session);
-    echo view('header', $session);
-    return $this->response->redirect('/');
+    $UM = new UserModel();
+    $result = $UM->where('ID', $id)->where('PWD', $hash_pwd);
+    if ( $result ) {
+      $session = $this->createSession();
+      var_dump($session);
+//      echo view('header', $session);
+      return $this->response->redirect('/');
+    } else {
+      return $this->response->setJSON('error');
+    }
   }
 
   /* @param
