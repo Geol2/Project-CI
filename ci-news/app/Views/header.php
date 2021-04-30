@@ -226,7 +226,13 @@
       <a href="#"> 접수 </a>
       <a href="/Boards"> 커뮤니티 </a>
     </div>
-    <div class="join"> <a href="/login"> 로그인 </a> </div>
+    <?php ?>
+    <?php if(isset($_SESSION['name']) == false ) { ?>
+      <div class="join"> <a href="/Auth/login"> 로그인 </a> </div>
+    <?php } else { ?>
+      <div class="join"> <a href="/Auth/logout"> 로그아웃 </a> </div>
+    <?php } ?>
+    <?php ?>
     <div class="signup"> <a href="/sign"> 회원가입 </a> </div>
   </div>
 </div>
