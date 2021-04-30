@@ -27,12 +27,10 @@ class Boards extends ResourcePresenter
 
   /* @param : void
    * @author : GEOL <big9401@gmail.com>
-   * @return : view
-   * 게시판 메인 및 페이지네이션 라이브러리 사용
+   * @return : int
    * */
-	public function index()
+	public function index(): int
   {
-
     // 게시판 데이터 불러오기
     $boardModel = new BoardModel();
 
@@ -41,14 +39,10 @@ class Boards extends ResourcePresenter
       'pager' => $boardModel->pager,
     ];
 
-    $page = $this->request->getGet('page');
-    if(isset($page)) {
-      array_push($data, $page);
-    }
-
     echo view('/header');
     echo view('/boards/table/table', $data);
     echo view('/boards/table/board');
+    return 0;
 	}
 
 	public function new()
