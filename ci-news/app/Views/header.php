@@ -288,4 +288,5 @@
   </div>
 </div>
 
-<?php echo $session->name; ?>
+<?php var_dump($session->name); ?>
+<?php var_dump($session->city); ?>
