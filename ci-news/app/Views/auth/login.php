@@ -1,20 +1,20 @@
 <?php
   /* @var $validation
    * */
-  $validation->setRules([
-    'id' => 'required',
-    'password' => 'required|min_length[10]'
-  ]);
-  echo '<pre>';
-  var_dump($validation);
-  echo '</pre>';
+//  $validation->setRules([
+//    'id' => 'required',
+//    'password' => 'required|min_length[10]'
+//  ]);
+//  echo '<pre>';
+//  var_dump($validation);
+//  echo '</pre>';
 ?>
 
 <section>
   <div class="write_class">
     <h1> 로그인 (구현예정) </h1>
 
-    <form name="loginForm" id="registerForm" method="post" action="/Auth/login">
+    <form name="loginForm" id="registerForm" method="post" action="/Auth/loginProc">
       <div>
         <label for="id"> 아이디 </label>
         <input name="id" id="id" type="text"  placeholder="아이디" maxlength='20' >
