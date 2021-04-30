@@ -10,9 +10,13 @@ use Exception;
  */
 class Boards extends ResourcePresenter
 {
-  protected $now;
+  /*
+   * 시간을 담아내는 변수
+   */
+  protected string $now;
 
-  /* @see 헬퍼 로드 vendor\CodeIgniter4\system\helpers\date_helper.php
+  /* @author GEOL <big9401@gmail.com>
+   * @see 헬퍼 로드 vendor\CodeIgniter4\system\helpers\date_helper.php
    * "_help" 를 제외하고 helper('date')., "_help" 를 제외하고 helper('date').
    * 많은 기능이 'vendor\CodeIgniter4\system\I18n' 모듈로 이동됨.
    */
@@ -58,14 +62,16 @@ class Boards extends ResourcePresenter
     return 0;
   }
 
-  /* 새 단건 글 작성 */
+  /* @param void
+   * @return ResponseInterface
+   * @throws \ReflectionException
+   * @see 게시글 한 개 추가하기
+   * @author GEOL <big9401@gmail.com>
+   */
   public function create(): ResponseInterface {
-    // echo 'function create exec';
-    $request = service('request');
-
-    $sub = $request->getPost('sub');
-    $content = $request->getPost('content');
-    $writer = $request->getPost('writer');
+    $sub = $this->request->getPost('sub');
+    $content = $this->request->getPost('content');
+    $writer = $this->request->getPost('writer');
 
     $data = array(
       'SUB' => $sub,
@@ -74,13 +80,13 @@ class Boards extends ResourcePresenter
     );
 
     $RM = new BoardModel();
-    $RM->setDataBoard($data);
+    $RM->insert($data);
 
     echo view('/header');
     return $this->response->redirect('/Boards');
   }
 
-  /* @param string $id : 게시글 번호
+  /* @param string $id
    * @return int 0
    * @throws \ReflectionException
    * @author GEOL <big9401@gmail.com>
