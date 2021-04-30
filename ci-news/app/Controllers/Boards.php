@@ -5,6 +5,9 @@ use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\RESTful\ResourcePresenter;
 use Exception;
 
+/* @author GEOL <big9401@gmail.com>
+ * @see ResourcePresenter Boards
+ */
 class Boards extends ResourcePresenter
 {
   protected $now;
@@ -13,8 +16,7 @@ class Boards extends ResourcePresenter
    * "_help" 를 제외하고 helper('date')., "_help" 를 제외하고 helper('date').
    * 많은 기능이 'vendor\CodeIgniter4\system\I18n' 모듈로 이동됨.
    */
-  public function __construct()
-  {
+  public function __construct() {
     helper('date');
     try {
       $unix = now('Asia/Seoul'); // 현재시간 : UNIX 타임 스탬프
@@ -29,8 +31,7 @@ class Boards extends ResourcePresenter
    * @return int
    * @see 게시판 테이블
    * */
-	public function index(): int
-  {
+	public function index(): int {
     // 게시판 데이터 불러오기
     $boardModel = new BoardModel();
 
@@ -58,8 +59,7 @@ class Boards extends ResourcePresenter
   }
 
   /* 새 단건 글 작성 */
-  public function create(): ResponseInterface
-  {
+  public function create(): ResponseInterface {
     // echo 'function create exec';
     $request = service('request');
 
@@ -86,8 +86,7 @@ class Boards extends ResourcePresenter
    * @author GEOL <big9401@gmail.com>
    * @see 게시글 한 개를 보여줌.
    */
-  function show($id = null)
-  {
+  function show($id = null): int {
     $sno = $id;
     // 게시판 한 개 데이터 불러오기
     $RM = new BoardModel();
@@ -137,17 +136,19 @@ class Boards extends ResourcePresenter
     return 0;
   }
 
-  function update($id = null): ResponseInterface
-  {
-    //echo "function update";
-    $request = service('request');
-
+  /* @param string $id
+   * @return ResponseInterface
+   * @throws \ReflectionException
+   * @author GEOL <big9401@gmail.com>
+   * @see 게시글 한개 수정하기
+   */
+  function update($id = null): ResponseInterface {
     $sno = $id; // $request->getPost('sno');
-    $sub = $request->getPost('sub');
-    $content = $request->getPost('content');
-    $writer = $request->getPost('writer');
+    $sub = $this->request->getPost('sub');
+    $content = $this->request->getPost('content');
+    $writer = $this->request->getPost('writer');
     $date = $this->now;
-    $hit = $request->getPost('hit');
+    $hit = $this->request->getPost('hit');
 
     $result = array(
       'SNO' => $sno,
@@ -157,17 +158,23 @@ class Boards extends ResourcePresenter
       'DATE_CHAR' => $date,
       'HIT' => $hit
     );
-
-    $RM = new ResourceModel();
-    $RM->udtDataBoard($sno, $result);
+    
+    // 게시글 데이터베이스 업데이트
+    $RM = new BoardModel();
+    $RM->update($sno, $result);
 
     return $this->response->redirect('/Boards');
   }
 
+  /* @param string $id
+   * @return ResponseInterface
+   * @author GEOL <big9401@gmail.com>
+   * @see 게시글 한 개 삭제
+   */
   function remove($id = null): ResponseInterface
   {
-    $RM = new ResourceModel();
-    $RM->rmvDataBoard($id);
+    $RM = new BoardModel();
+    $RM->delete($id);
 
     return $this->response->redirect('/Boards');
   }
