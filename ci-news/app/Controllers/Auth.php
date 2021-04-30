@@ -85,8 +85,11 @@ class Auth extends Controller {
     $hash_pwd = hash('sha512', $pwd);
 
 
-    $UM = new UserModel();
-    $result = $UM->where('ID', $id)->where('PWD', $hash_pwd);
+    // $UM = new UserModel();
+    $db = \Config\Database::connect();
+    $builder = $db->table("users");
+    $query = $builder->where('ID', $id)->where('PWD', $hash_pwd)->get();
+    $result = $query->getResult();
     if ( $result ) {
       $session = $this->createSession();
       var_dump($session);
