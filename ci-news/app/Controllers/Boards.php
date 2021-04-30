@@ -40,7 +40,7 @@ class Boards extends ResourcePresenter
     $boardModel = new BoardModel();
 
     $data = [
-      'content' => $boardModel->paginate(2),
+      'content' => $boardModel->paginate(5),
       'pager' => $boardModel->pager,
     ];
 
@@ -74,9 +74,10 @@ class Boards extends ResourcePresenter
     $writer = $this->request->getPost('writer');
 
     $data = array(
-      'SUB' => $sub,
+      'SUBJECT_NAME' => $sub,
       'CONTENT' => $content,
-      'WRITER' => $writer
+      'WRITER' => $writer,
+      'HIT' => 0
     );
 
     $RM = new BoardModel();
