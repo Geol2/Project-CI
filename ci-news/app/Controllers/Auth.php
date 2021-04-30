@@ -14,7 +14,11 @@ class Auth extends Controller {
 
   }
 
-  public function createSession() {
+  /* @author GEOL <big9401@gmail.com>
+   * @see 세션 테스트
+   */
+  public function createSession(): array
+  {
     $session = Services::session();
     $mySession = array(
       'name' => 'geol',
@@ -25,6 +29,9 @@ class Auth extends Controller {
     return $mySession;
   }
 
+  /* @author GEOL <big9401@gmail.com>
+   * @see 세션 테스트
+   */
   public function checkSession() {
     $session = Services::session();
     if( $session->has('name') ) {
@@ -36,6 +43,9 @@ class Auth extends Controller {
     }
   }
 
+  /* @author GEOL <big9401@gmail.com>
+   * @see 세션 테스트
+   */
   public function destroySession() {
     $session = Services::session();
     if( $session->has('name') ) {
@@ -47,6 +57,9 @@ class Auth extends Controller {
     }
   }
 
+  /* @author GEOL <big9401@gmail.com>
+   * @see 로그인 뷰 띄우기
+   */
   public function login() {
 //    $this->createSession();
 //    $this->response->redirect('/');
@@ -55,27 +68,40 @@ class Auth extends Controller {
     echo view('auth/login');
   }
 
+  /* @author GEOL <big9401@gmail.com>
+   * @see 세션 테스트, 로그아웃
+   */
   public function logout() {
     $this->destroySession();
     $this->response->redirect('/');
   }
 
+  /* @author GEOL <big9401@gmail.com>
+   * @see 로그인 처리
+   */
   public function loginProc() {
     $id = $this->request->getPost('id');
     $pwd = $this->request->getPost('password');
     $hash_pwd = hash('sha512', $pwd);
 
 
-    $UM = new UserModel();
-    $UM->where('id');
+//    $UM = new UserModel();
+//    if ( $UM->get($id)->where('PWD', $hash_pwd) ) {
+//
+//    } else {
+//
+//    }
+
     $session = $this->createSession();
-    var_dump($session);
+//    var_dump($session);
     echo view('header', $session);
+    return $this->response->redirect('/');
   }
 
   /* @param
    * @author GEOL <big9401@gmail.com>
    * @throws \ReflectionException
+   * @see 회원가입 처리
    */
   public function register(): ResponseInterface
   {
