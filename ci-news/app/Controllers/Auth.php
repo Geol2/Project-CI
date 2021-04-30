@@ -3,6 +3,7 @@
 use App\Models\UserModel;
 use CodeIgniter\Controller;
 use Config\Services as Services;
+use CodeIgniter\HTTP\ResponseInterface as ResponseInterface;
 
 /* @Author GEOL <big9401@gmail.com>
  * @see 로그인 인증 관련 컨트롤러
@@ -21,9 +22,7 @@ class Auth extends Controller {
     );
     $session->set($mySession);
 
-//    echo '<pre>';
-//    var_dump($session);
-//    echo '</pre>';
+    return $mySession;
   }
 
   public function checkSession() {
@@ -62,7 +61,41 @@ class Auth extends Controller {
   }
 
   public function loginProc() {
+    $id = $this->request->getPost('id');
+    $pwd = $this->request->getPost('password');
+    $hash_pwd = hash('sha512', $pwd);
 
-    $this->createSession();
+
+    $UM = new UserModel();
+    $UM->where('id');
+    $session = $this->createSession();
+    var_dump($session);
+    echo view('header', $session);
+  }
+
+  /* @param
+   * @author GEOL <big9401@gmail.com>
+   * @throws \ReflectionException
+   */
+  public function register(): ResponseInterface
+  {
+    $id = $this->request->getPost("id");
+    $mail = $this->request->getPost("mail");
+    $password = $this->request->getPost("password");
+    $name = $this->request->getPost("name");
+
+    $password_hash = hash("sha512", $password);
+
+    $data = array(
+      "ID" => $id,
+      "MAIL" => $mail,
+      "PWD" => $password_hash,
+      "NAME" => $name
+    );
+
+    $UM = new UserModel();
+    $UM->insert($data);
+
+    return $this->response->redirect('/');
   }
 }
