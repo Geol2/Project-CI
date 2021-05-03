@@ -275,7 +275,7 @@
     </div>
 
     <?php $session = session(); ?>
-    <?php if (!isset($session->name)) { ?>
+    <?php if (!isset($session->grade)) { ?>
       <div class="join"><a href="/Auth/login"> 로그인 </a></div>
       <div class="signup"><a href="/sign"> 회원가입 </a></div>
     <?php } else { ?>

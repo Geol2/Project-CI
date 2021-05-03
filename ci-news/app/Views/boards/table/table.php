@@ -32,16 +32,24 @@
             </tr>
           </thead>
             <tbody>
-              <?php for($i = count($this->{'data'}['content']) - 1; $i >= 0; $i--) { ?>
+              <?php for($i = count($content) - 1; $i >= 0; $i--) { ?>
                 <tr>
                   <td><label><input type="checkbox" /></label></td>
-                  <td> <?= $this->{'data'}['content'][$i]['SNO'] ?> </td>
-                  <td> <?= $this->{'data'}['content'][$i]['SUBJECT_NAME'] ?> </td>
-                  <td> <?= $this->{'data'}['content'][$i]['CONTENT'] ?> </td>
-                  <td> <?= $this->{'data'}['content'][$i]['WRITER'] ?> </td>
-                  <td> <?= $this->{'data'}['content'][$i]['created_at'] ?> </td>
-                  <td > <a class="table show" href="/Boards/<?= $this->{'data'}['content'][$i]['SNO'] ?>"> 보기 </a>  </td>
-                  <td> <?= $this->{'data'}['content'][$i]['HIT'] ?></td>
+                  <td> <?= $content[$i]['SNO'] ?> </td>
+                  <?php if( strlen($content[$i]['SUBJECT_NAME']) > 10 ) { ?>
+                    <td> <?= iconv_substr($content[$i]['SUBJECT_NAME'], 0, 10, "utf-8") ?>... </td>
+                  <?php } else { ?>
+                    <td> <?= $content[$i]['SUBJECT_NAME'] ?> </td>
+                  <?php } ?>
+                  <?php if( strlen($content[$i]['CONTENT']) > 10 ) { ?>
+                    <td> <?= iconv_substr($content[$i]['CONTENT'], 0 ,10, "utf-8") ?>... </td>
+                  <?php } else { ?>
+                    <td> <?= $content[$i]['CONTENT'] ?> </td>
+                  <?php } ?>
+                  <td> <?= $content[$i]['WRITER'] ?> </td>
+                  <td> <?= $content[$i]['created_at'] ?> </td>
+                  <td > <a class="table show" href="/Boards/<?= $content[$i]['SNO'] ?>"> 보기 </a>  </td>
+                  <td> <?= $content[$i]['HIT'] ?></td>
                 </tr>
               <?php } ?>
             </tbody>
