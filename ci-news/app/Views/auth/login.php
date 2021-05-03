@@ -12,7 +12,7 @@
 
 <section>
   <div class="write_class">
-    <h1> 로그인 (구현예정) </h1>
+    <h1> 로그인 </h1>
 
     <form name="loginForm" id="registerForm" method="post" action="/Auth/loginProc">
       <div>

@@ -37,12 +37,12 @@
                   <td><label><input type="checkbox" /></label></td>
                   <td> <?= $content[$i]['SNO'] ?> </td>
                   <?php if( strlen($content[$i]['SUBJECT_NAME']) > 10 ) { ?>
-                    <td> <?= iconv_substr($content[$i]['SUBJECT_NAME'], 0, 10, "utf-8") ?>... </td>
+                    <td> <?= iconv_substr($content[$i]['SUBJECT_NAME'], 0, 10, "utf-8") ?> ... </td>
                   <?php } else { ?>
                     <td> <?= $content[$i]['SUBJECT_NAME'] ?> </td>
                   <?php } ?>
                   <?php if( strlen($content[$i]['CONTENT']) > 10 ) { ?>
-                    <td> <?= iconv_substr($content[$i]['CONTENT'], 0 ,10, "utf-8") ?>... </td>
+                    <td> <?= iconv_substr($content[$i]['CONTENT'], 0 ,10, "utf-8") ?> ... </td>
                   <?php } else { ?>
                     <td> <?= $content[$i]['CONTENT'] ?> </td>
                   <?php } ?>

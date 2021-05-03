@@ -115,7 +115,8 @@ class Auth extends Controller {
       "ID" => $id,
       "MAIL" => $mail,
       "PWD" => $password_hash,
-      "NAME" => $name
+      "NAME" => $name,
+      "GRADE" => "guest"
     );
 
     $UM = new UserModel();

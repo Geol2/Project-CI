@@ -39,15 +39,14 @@
 </section>
 
 <script type="text/javascript">
-
+  let checkPassword = false;
   function dupPassword() {
-    let checkPassword = false;
     let password = document.getElementById("password").value;
     let password_re = document.getElementById("password_re").value;
 
     if(password === password_re) {
       alert("비밀번호가 일치합니다.");
-      this.checkPassword = true;
+      checkPassword = true;
     } else {
       alert("비밀번호가 일치하지 않습니다.");
     }
