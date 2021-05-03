@@ -84,16 +84,13 @@ class Auth extends Controller {
     $pwd = $this->request->getPost('password');
     $hash_pwd = hash('sha512', $pwd);
 
+    $UM = new UserModel();
+    $data = $UM->where('ID', $id)->where('PWD', $hash_pwd)->get();
+    $result = $data->getResultObject()[0];
 
-    // $UM = new UserModel();
-    $db = \Config\Database::connect();
-    $builder = $db->table("users");
-    $query = $builder->where('ID', $id)->where('PWD', $hash_pwd)->get();
-    $result = $query->getResult()[0];
     if ( $result ) {
       $session = $this->createSession($result);
       var_dump($session);
-//      echo view('header', $session);
       return $this->response->redirect('/');
     } else {
       return $this->response->setJSON('error');
