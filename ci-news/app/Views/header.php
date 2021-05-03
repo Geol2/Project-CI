@@ -289,4 +289,4 @@
 </div>
 
 <?php var_dump($session->name); ?>
-<?php var_dump($session->city); ?>
+<?php var_dump($session->grade); ?>

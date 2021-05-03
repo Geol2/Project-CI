@@ -17,12 +17,12 @@ class Auth extends Controller {
   /* @author GEOL <big9401@gmail.com>
    * @see 세션 테스트
    */
-  public function createSession(): array
+  public function createSession( $data ): array
   {
     $session = Services::session();
     $mySession = array(
-      'name' => 'geol',
-      'city' => 'seoul'
+      'name' => $data->{'NAME'},
+      'grade' => $data->{'GRADE'}
     );
     $session->set($mySession);
 
@@ -89,9 +89,9 @@ class Auth extends Controller {
     $db = \Config\Database::connect();
     $builder = $db->table("users");
     $query = $builder->where('ID', $id)->where('PWD', $hash_pwd)->get();
-    $result = $query->getResult();
+    $result = $query->getResult()[0];
     if ( $result ) {
-      $session = $this->createSession();
+      $session = $this->createSession($result);
       var_dump($session);
 //      echo view('header', $session);
       return $this->response->redirect('/');
