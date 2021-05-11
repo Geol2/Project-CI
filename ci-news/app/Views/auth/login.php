@@ -25,27 +25,27 @@
 
 <script type="text/javascript">
   function loginProc() {
-    // let id = document.getElementById("id").value;
-    // let password = document.getElementById("password").value;
-    //
-    // const loginData = {
-    //   id : id,
-    //   password: password
-    // };
-    // let jsonData = JSON.stringify(loginData);
-    //
-    // debugger;
-    //
-    // let xhr = new XMLHttpRequest();
-    // xhr.open('post', '/Auth/loginProc');
-    // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    // xhr.onreadystatechange = function () {
-    //   console.log(this);
-    //   if(this.readyState === 4 && this.status === 200) {
-    //     console.log(this);
-    //   }
-    // };
-    // xhr.send(jsonData);
+    let id = document.getElementById("id").value;
+    let password = document.getElementById("password").value;
+
+    const loginData = {
+      id : id,
+      password: password
+    };
+    let jsonData = JSON.stringify(loginData);
+
+    debugger;
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('post', '/Auth/loginProc');
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function () {
+      console.log(this);
+      if(this.readyState === 4 && this.status === 200) {
+        console.log(this);
+      }
+    };
+    xhr.send(jsonData);
 
     // $.ajax({
     //   url: '/Auth/loginProc',
