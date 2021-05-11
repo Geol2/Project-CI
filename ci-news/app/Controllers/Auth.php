@@ -43,6 +43,9 @@ class Auth extends Controller {
    */
   public function loginProc()
   {
+    $str_json = file_get_contents('php://input');
+    $result = json_decode($str_json);
+
     $id = $this->request->getPost('id');
     $pwd = $this->request->getPost('password');
     $hash_pwd = hash('sha512', $pwd);

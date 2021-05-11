@@ -25,35 +25,52 @@
 
 <script type="text/javascript">
   function loginProc() {
-    const loginData = {
-      id: $('#id').val(),
-      password: $('#password').val()
-    };
+    // let id = document.getElementById("id").value;
+    // let password = document.getElementById("password").value;
+    //
+    // const loginData = {
+    //   id : id,
+    //   password: password
+    // };
+    // let jsonData = JSON.stringify(loginData);
+    //
+    // debugger;
+    //
+    // let xhr = new XMLHttpRequest();
+    // xhr.open('post', '/Auth/loginProc');
+    // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    // xhr.onreadystatechange = function () {
+    //   console.log(this);
+    //   if(this.readyState === 4 && this.status === 200) {
+    //     console.log(this);
+    //   }
+    // };
+    // xhr.send(jsonData);
 
-    $.ajax({
-      url: '/Auth/loginProc',
-      // headers: {'X-Requested-with' : 'XMLHttpRequest'},
-      data: loginData,
-      type: 'post',
-      dataType: 'json',
-      success: function(res) {
-        console.log(res);
-        if( res.code === 200 ) {
-          alert("로그인 되었습니다.");
-        } else {
-          alert("아이디와 패스워드를 다시 확인해주세요.");
-        }
-      },
-      error: function(res) {
-        console.log(res);
-        alert("시스템에 문제가 발생하였습니다.");
-      },
-      complete: function(res) {
-        // console.log(res.responseJSON);
-        if( res.responseJSON.code === 200 ) {
-          location.href = '/';
-        }
-      }
-    });
+    // $.ajax({
+    //   url: '/Auth/loginProc',
+    //   // headers: {'X-Requested-with' : 'XMLHttpRequest'},
+    //   data: loginData,
+    //   type: 'post',
+    //   dataType: 'json',
+    //   success: function(res) {
+    //     console.log(res);
+    //     if( res.code === 200 ) {
+    //       alert("로그인 되었습니다.");
+    //     } else {
+    //       alert("아이디와 패스워드를 다시 확인해주세요.");
+    //     }
+    //   },
+    //   error: function(res) {
+    //     console.log(res);
+    //     alert("시스템에 문제가 발생하였습니다.");
+    //   },
+    //   complete: function(res) {
+    //     // console.log(res.responseJSON);
+    //     if( res.responseJSON.code === 200 ) {
+    //       location.href = '/';
+    //     }
+    //   }
+    // });
   }
 </script>
