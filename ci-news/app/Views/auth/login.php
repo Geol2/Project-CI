@@ -1,20 +1,9 @@
-<?php
-  /* @var $validation
-   * */
-//  $validation->setRules([
-//    'id' => 'required',
-//    'password' => 'required|min_length[10]'
-//  ]);
-//  echo '<pre>';
-//  var_dump($validation);
-//  echo '</pre>';
-?>
 
 <section>
   <div class="write_class">
     <h1> 로그인 </h1>
 
-    <form name="loginForm" id="registerForm" method="post" action="/Auth/loginProc">
+<!--    <form name="loginForm" id="registerForm" method="post" action="/Auth/loginProc">-->
       <div>
         <label for="id"> 아이디 </label>
         <input name="id" id="id" type="text"  placeholder="아이디" maxlength='20' >
@@ -25,12 +14,46 @@
       </div>
       <br>
       <div>
-        <input id="submitBtn" class="submit" type="submit" value="전송">
+        <button id="submitBtn" class="submit" onclick="loginProc()" > 전송 </button>
       </div>
-    </form>
+<!--    </form>-->
     <div>
       <a href="/Boards"> 취소 </a>
     </div>
   </div>
 </section>
-<?php
+
+<script type="text/javascript">
+  function loginProc() {
+    const loginData = {
+      id: $('#id').val(),
+      password: $('#password').val()
+    };
+
+    $.ajax({
+      url: '/Auth/loginProc',
+      // headers: {'X-Requested-with' : 'XMLHttpRequest'},
+      data: loginData,
+      type: 'post',
+      dataType: 'json',
+      success: function(res) {
+        console.log(res);
+        if( res.code === 200 ) {
+          alert("로그인 되었습니다.");
+        } else {
+          alert("아이디와 패스워드를 다시 확인해주세요.");
+        }
+      },
+      error: function(res) {
+        console.log(res);
+        alert("시스템에 문제가 발생하였습니다.");
+      },
+      complete: function(res) {
+        // console.log(res.responseJSON);
+        if( res.responseJSON.code === 200 ) {
+          location.href = '/';
+        }
+      }
+    });
+  }
+</script>

@@ -83,6 +83,7 @@ $routes->post('login/on', 'User::logon');
 $routes->post('Auth', 'Auth::index');
 $routes->post('Auth/login', 'Auth::login');
 
+$routes->get('errors/error_exception', 'Error::getHome');
 /*
  * -----------------------------------------------------------
  * ㅣ                    테 스 트                            ㅣ

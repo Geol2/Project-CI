@@ -5,6 +5,8 @@ use CodeIgniter\Controller;
 use Config\Services as Services;
 use CodeIgniter\HTTP\ResponseInterface as ResponseInterface;
 
+use App\Libraries\ResultJson\Json as Json;
+
 /* @Author GEOL <big9401@gmail.com>
  * @see 로그인 인증 관련 컨트롤러
  * */
@@ -21,8 +23,8 @@ class Auth extends Controller {
   {
     $session = Services::session();
     $mySession = array(
-      'name' => $data->{'NAME'},
-      'grade' => $data->{'GRADE'}
+      'name' => $data[0]->{'NAME'},
+      'grade' => $data[0]->{'GRADE'}
     );
     $session->set($mySession);
 
@@ -77,28 +79,29 @@ class Auth extends Controller {
   }
 
   /* @author GEOL <big9401@gmail.com>
+   * @return bool | string
    * @see 로그인 처리
    */
-  public function loginProc() {
+  public function loginProc()
+  {
     $id = $this->request->getPost('id');
     $pwd = $this->request->getPost('password');
     $hash_pwd = hash('sha512', $pwd);
 
     $UM = new UserModel();
     $data = $UM->where('ID', $id)->where('PWD', $hash_pwd)->get();
-    $result = $data->getResultObject()[0];
+    $result = $data->getResultObject();
 
+    $json = new Json();
     if ( $result ) {
       $session = $this->createSession($result);
-      var_dump($session);
-      return $this->response->redirect('/');
+      return $json->success();
     } else {
-      return $this->response->setJSON('error');
+      return $json->fail();
     }
   }
 
-  /* @param
-   * @author GEOL <big9401@gmail.com>
+  /* @author GEOL <big9401@gmail.com>
    * @throws \ReflectionException
    * @see 회원가입 처리
    */
