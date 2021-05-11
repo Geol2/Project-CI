@@ -6,6 +6,7 @@ use Config\Services as Services;
 use CodeIgniter\HTTP\ResponseInterface as ResponseInterface;
 
 use App\Libraries\ResultJson\Json as Json;
+use App\Libraries\SessionLib\Session as Session;
 
 /* @Author GEOL <big9401@gmail.com>
  * @see 로그인 인증 관련 컨트롤러
@@ -14,49 +15,6 @@ class Auth extends Controller {
 
   public function index() {
 
-  }
-
-  /* @author GEOL <big9401@gmail.com>
-   * @see 세션 테스트
-   */
-  public function createSession( $data ): array
-  {
-    $session = Services::session();
-    $mySession = array(
-      'name' => $data[0]->{'NAME'},
-      'grade' => $data[0]->{'GRADE'}
-    );
-    $session->set($mySession);
-
-    return $mySession;
-  }
-
-  /* @author GEOL <big9401@gmail.com>
-   * @see 세션 테스트
-   */
-  public function checkSession() {
-    $session = Services::session();
-    if( $session->has('name') ) {
-      echo $session->get('name');
-      echo '</br>';
-      echo 'session exist';
-    } else {
-      echo 'session not exist';
-    }
-  }
-
-  /* @author GEOL <big9401@gmail.com>
-   * @see 세션 테스트
-   */
-  public function destroySession() {
-    $session = Services::session();
-    if( $session->has('name') ) {
-      $session->destroy();
-      echo '</br>';
-      echo 'session destroy';
-    } else {
-      echo 'error here';
-    }
   }
 
   /* @author GEOL <big9401@gmail.com>
@@ -74,7 +32,8 @@ class Auth extends Controller {
    * @see 세션 테스트, 로그아웃
    */
   public function logout() {
-    $this->destroySession();
+    $session = new Session;
+    $session->destroySession();
     $this->response->redirect('/');
   }
 
@@ -94,7 +53,8 @@ class Auth extends Controller {
 
     $json = new Json();
     if ( $result ) {
-      $session = $this->createSession($result);
+      $session = new Session();
+      $session->createSession($result);
       return $json->success();
     } else {
       return $json->fail();
