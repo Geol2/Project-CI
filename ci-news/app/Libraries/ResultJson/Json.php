@@ -11,19 +11,17 @@ interface JsonInterface {
 /* @author GEOL <big9401@gmail.com>
  * @see json 추상 클래스 정의
  */
-abstract class JsonAbstract implements JsonInterface
-{
+abstract class JsonAbstract implements JsonInterface {
   abstract public function success();
   abstract public function fail();
 }
 
 /* @author GEOL <big9401@gmail.com>
- * @see json 클래스 정의
+ * @see json 클래스
  */
 class Json extends JsonAbstract {
-
-  public function success($data = null) {
-    // TODO: Implement success() method.
+  public function success() {
+      // TODO: Implement success() method.
     $result = array(
       'code' => 200,
       'data' => 'success'
@@ -31,7 +29,7 @@ class Json extends JsonAbstract {
     return json_encode($result, JSON_UNESCAPED_UNICODE);
   }
 
-  public function fail($data = null) {
+  public function fail() {
     // TODO: Implement fail() method.
     $result = array(
       'code' => 400,
