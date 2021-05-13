@@ -71,3 +71,16 @@ select * from users;
 drop table board;
 drop table user;
 
+// 저장!
+CREATE TABLE payment_confirm (
+	idx int(5) auto_increment NOT NULL COMMENT 'idx',
+	user_id varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '유저 아이디',
+	password varchar(130) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '2차 인증 패스워드',
+	created_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL COMMENT '최초 생성일',
+	updated_at timestamp DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL COMMENT '업데이트일',
+	CONSTRAINT `PRIMARY` PRIMARY KEY (idx)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8
+COLLATE=utf8_general_ci
+COMMENT='카드결제 2차 인증 비밀번호';
